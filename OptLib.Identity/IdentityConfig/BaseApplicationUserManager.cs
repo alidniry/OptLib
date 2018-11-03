@@ -16,7 +16,7 @@ namespace OptLib.Identity
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class BaseApplicationUserManager<TUser>
-        : UserManager<TUser, string>
+        : UserManager<TUser>
         where TUser : class, IUser<string>
     {
         public BaseApplicationUserManager(IUserStore<TUser> store)
