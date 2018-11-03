@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<metadata>
+	<id>OptLib.Data</id>
+	<version>1.0.5</version>
+	<title>OptLib.Data</title>
+	<authors>Ali Dehghan Niry</authors>
+	<owners>Ali Dehghan Niry</owners>
+	<licenseUrl>http://slpdatepicker.codeplex.com/license</licenseUrl>
+	<projectUrl>http://slpdatepicker.codeplex.com/</projectUrl>
+	<iconUrl>https://slpdatepicker.svn.codeplex.com/svn/SilverlightPersianDatePicker/Views/Images/date.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>برای آسان سازی ساختاری در کار با دیتا</description>
+	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
+	<tags>Data Base Table</tags>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.2.0" />
+      <dependency id="OptLib.Globalization" version="1.0.0" />
+      <dependency id="OptLib.ExtensionMethods" version="1.0.0" />
+    </dependencies>
+</metadata>
+<files>
+	<file src="..\..\..\GitHub\OptLib\OptLib.Data\bin\Release\OptLib.Data.dll" target="lib\net461\OptLib.Data.dll" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Data\bin\Release\OptLib.Data.dll.config" target="lib\net461\OptLib.Data.dll.config" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Data\bin\Release\OptLib.Data.pdb" target="lib\net461\OptLib.Data.pdb" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Data\bin\Release\OptLib.Data.xml" target="lib\net461\OptLib.Data.xml" />
+</files>
+</package>

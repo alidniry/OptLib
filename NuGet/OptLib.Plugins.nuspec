@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<metadata>
+	<id>OptLib.Globalization</id>
+	<version>1.0.0</version>
+	<title>OptLib.Globalization</title>
+	<authors>Ali Dehghan Niry</authors>
+	<owners>Ali Dehghan Niry</owners>
+	<licenseUrl>http://slpdatepicker.codeplex.com/license</licenseUrl>
+	<projectUrl>http://slpdatepicker.codeplex.com/</projectUrl>
+	<iconUrl>https://slpdatepicker.svn.codeplex.com/svn/SilverlightPersianDatePicker/Views/Images/date.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>برای آسان سازی ساختاری در کار با قابلیت چند زبانی</description>
+	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
+	<tags> Base </tags>
+</metadata>
+<files>
+	<file src="..\..\..\GitHub\OptLib\OptLib.Globalization\bin\Release\OptLib.Globalization.dll" target="lib\net461\OptLib.Globalization.dll" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Globalization\bin\Release\OptLib.Globalization.pdb" target="lib\net461\OptLib.Globalization.pdb" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Globalization\bin\Release\OptLib.Globalization.xml" target="lib\net461\OptLib.Globalization.xml" />
+</files>
+</package>

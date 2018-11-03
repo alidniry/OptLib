@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<metadata>
+	<id>OptLib.Threading</id>
+	<version>1.0.0</version>
+	<title>OptLib.Threading</title>
+	<authors>Ali Dehghan Niry</authors>
+	<owners>Ali Dehghan Niry</owners>
+	<licenseUrl>http://slpdatepicker.codeplex.com/license</licenseUrl>
+	<projectUrl>http://slpdatepicker.codeplex.com/</projectUrl>
+	<iconUrl>https://slpdatepicker.svn.codeplex.com/svn/SilverlightPersianDatePicker/Views/Images/date.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>برای آسان سازی ساختاری در کار با تردهای اجرایی</description>
+	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
+	<tags>Threading Base</tags>
+    <dependencies>
+    </dependencies>
+</metadata>
+<files>
+	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.dll" target="lib\net461\OptLib.Threading.dll" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.pdb" target="lib\net461\OptLib.Threading.pdb" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.xml" target="lib\net461\OptLib.Threading.xml" />
+</files>
+</package>
