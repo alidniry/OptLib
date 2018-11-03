@@ -29,6 +29,5 @@ namespace OptLib.Identity.Models
         [StringLength(50)]
         [Column(Order = 2, TypeName = "nvarchar")]
         public String Name { get; set; }
-
     }
 }
