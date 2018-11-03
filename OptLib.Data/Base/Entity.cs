@@ -44,7 +44,6 @@ namespace OptLib.Data.Base
                 //    .HasMaxLength(25)
                 //    ;
             }
-
         }
         #endregion /Configuration
 

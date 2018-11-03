@@ -9,15 +9,15 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace OptLib.Identity.Models
 {
-    public class ApplicationRole 
+    public class BaseApplicationRole 
         : IdentityRole
     {
-        public ApplicationRole() 
+        public BaseApplicationRole() 
             : base()
         {
 
         }
-        public ApplicationRole(string name) 
+        public BaseApplicationRole(string name) 
             : base(name)
         {
 
@@ -29,5 +29,4 @@ namespace OptLib.Identity.Models
         public string ControllerName { get; set; }
         public string ActionName { get; set; }
     }
-
 }
