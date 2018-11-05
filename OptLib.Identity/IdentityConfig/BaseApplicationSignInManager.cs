@@ -15,11 +15,12 @@ using OptLib.Identity.Models;
 namespace OptLib.Identity
 {
     // Configure the application sign-in manager which is used in this application.
-    public class BaseApplicationSignInManager<TUser>
-        : SignInManager<TUser, string>
-        where TUser : class, IUser<string>
+    public class BaseApplicationSignInManager<TUser, TKey>
+        : SignInManager<TUser, TKey>
+        where TUser : class, IUser<TKey>
+        where TKey : IEquatable<TKey>
     {
-        public BaseApplicationSignInManager(UserManager<TUser, string> userManager, IAuthenticationManager authenticationManager)
+        public BaseApplicationSignInManager(UserManager<TUser, TKey> userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }

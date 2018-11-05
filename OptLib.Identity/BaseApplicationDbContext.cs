@@ -14,7 +14,7 @@ namespace OptLib.Identity
 {
     public class BaseApplicationDbContext<TUser>
         : IdentityDbContext<TUser>
-        where TUser : IdentityUser
+        where TUser : BaseApplicationUser//IdentityUser
     {
         public BaseApplicationDbContext()
             : base()

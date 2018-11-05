@@ -100,9 +100,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="ApplicationDbInitializer.cs" />
     <Compile Include="BaseApplicationDbContext.cs" />
+    <Compile Include="IdentityConfig\ApplicationRoleManager.cs" />
+    <Compile Include="IdentityConfig\ApplicationSignInManager.cs" />
+    <Compile Include="IdentityConfig\ApplicationUserManager.cs" />
     <Compile Include="IdentityConfig\BaseApplicationUserManager.cs" />
     <Compile Include="IdentityConfig\BaseApplicationSignInManager.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BaseApplicationRole.cs" />
     <Compile Include="Models\BaseApplicationUser.cs" />
     <Compile Include="IdentityConfig\EmailService.cs" />
