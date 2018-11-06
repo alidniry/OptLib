@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace OptLib.Identity.Models
 {
-    public class BaseApplicationRole 
+    public abstract class BaseApplicationRole 
         : IdentityRole
     {
         public BaseApplicationRole() 

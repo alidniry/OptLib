@@ -100,23 +100,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="ApplicationDbInitializer.cs" />
     <Compile Include="BaseApplicationDbContext.cs" />
-    <Compile Include="IdentityConfig\ApplicationRoleManager.cs" />
-    <Compile Include="IdentityConfig\ApplicationSignInManager.cs" />
-    <Compile Include="IdentityConfig\ApplicationUserManager.cs" />
     <Compile Include="IdentityConfig\BaseApplicationUserManager.cs" />
     <Compile Include="IdentityConfig\BaseApplicationSignInManager.cs" />
-    <Compile Include="Models\ApplicationRole.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BaseApplicationRole.cs" />
+    <Compile Include="Models\BaseApplicationUserClaim.cs" />
+    <Compile Include="Models\BaseApplicationUserRole.cs" />
+    <Compile Include="Models\BaseApplicationUserLogin.cs" />
     <Compile Include="Models\BaseApplicationUser.cs" />
     <Compile Include="IdentityConfig\EmailService.cs" />
     <Compile Include="IdentityConfig\SmsService.cs" />
     <Compile Include="IdentityConfig\BaseApplicationRoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\BaseController.cs" />
+    <Compile Include="Extensions\RoleManagerExtensions.cs" />
+    <Compile Include="Extensions\UserManagerExtensions.cs" />
+    <Compile Include="Web\BaseControllerIdentity.cs" />
     <Compile Include="Web\BaseControllerAccount.cs" />
     <Compile Include="Web\Helper\LabelHelper.cs" />
     <Compile Include="Web\Models\AccountViewModels.cs" />

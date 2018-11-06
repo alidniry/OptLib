@@ -10,59 +10,30 @@ using System.Web.Mvc;
 
 namespace OptLib.Identity.Web
 {
-    public abstract class BaseController<TUser, TApplicationUserManager, TApplicationSignInManager, TKey> : Controller
-        where TKey : IEquatable<TKey>
-        where TUser : class, IUser<TKey>
-        where TApplicationUserManager : UserManager<TUser, TKey>
-        where TApplicationSignInManager : SignInManager<TUser, TKey>
+    public abstract class BaseControllerIdentity<TUser, TRole, TAppUserManager, TAppRoleManager, TAppSignInManager> : Controller
+        where TUser : class, IUser<string>
+        where TRole : class, IRole<string>
+        where TAppUserManager : UserManager<TUser, string>
+        where TAppRoleManager : RoleManager<TRole, string>
+        where TAppSignInManager : SignInManager<TUser, string>
     {
+        public TAppUserManager UserManager { get; set; }
+        public TAppRoleManager RoleManager { get; set; }
+        public TAppSignInManager SignInManager { get; set; }
         public IAuthenticationManager AuthenticationManager { get; set; }
-        public TApplicationSignInManager SignInManager { get; set; }
-        public TApplicationUserManager UserManager { get; set; }
 
-        //public ApplicationSignInManager SignInManager { get; set; }
-        //public ApplicationUserManager UserManager { get; set; }
-
-        public BaseController()
+        public BaseControllerIdentity()
         {
         }
 
-        public BaseController(TApplicationUserManager userManager, TApplicationSignInManager signInManager, IAuthenticationManager authManager)
+        public BaseControllerIdentity(TAppUserManager userManager, TAppRoleManager roleManager, TAppSignInManager signInManager, IAuthenticationManager authManager)
         {
             UserManager = userManager;
+            RoleManager = roleManager;
             SignInManager = signInManager;
             AuthenticationManager = authManager;
         }
 
-        //public TApplicationSignInManager SignInManager
-        //{
-        //    get
-        //    {
-        //        return _signInManager ?? HttpContext.GetOwinContext().Get<TApplicationSignInManager>();
-        //    }
-        //    protected set
-        //    {
-        //        _signInManager = value;
-        //    }
-        //}
-
-        //public TApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<TApplicationUserManager>();
-        //    }
-        //    protected set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
-
-        //// GET: Base
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -72,6 +43,12 @@ namespace OptLib.Identity.Web
                 {
                     UserManager.Dispose();
                     UserManager = null;
+                }
+
+                if (RoleManager != null)
+                {
+                    RoleManager.Dispose();
+                    RoleManager = null;
                 }
 
                 if (SignInManager != null)
@@ -87,14 +64,6 @@ namespace OptLib.Identity.Web
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
-        //private IAuthenticationManager AuthenticationManager
-        //{
-        //    get
-        //    {
-        //        return HttpContext.GetOwinContext().Authentication;
-        //    }
-        //}
 
         protected void AddErrors(IdentityResult result)
         {
