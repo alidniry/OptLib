@@ -137,6 +137,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		..\..\NuGet\NugetPackages\OptLib.Build.bat = ..\..\NuGet\NugetPackages\OptLib.Build.bat
+		OptLib.jpg = OptLib.jpg
 		README.md = README.md
 	EndProjectSection
 EndProject

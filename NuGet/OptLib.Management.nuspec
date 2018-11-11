@@ -6,8 +6,8 @@
 	<title>OptLib.Globalization</title>
 	<authors>Ali Dehghan Niry</authors>
 	<owners>Ali Dehghan Niry</owners>
-	<licenseUrl>http://slpdatepicker.codeplex.com/license</licenseUrl>
-	<projectUrl>http://slpdatepicker.codeplex.com/</projectUrl>
+	<licenseUrl>https://github.com/alidniry/OptLib/blob/master/LICENSE</licenseUrl>
+	<projectUrl>https://github.com/alidniry/OptLib</projectUrl>
 	<iconUrl>https://slpdatepicker.svn.codeplex.com/svn/SilverlightPersianDatePicker/Views/Images/date.png</iconUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<description>برای آسان سازی ساختاری در کار با قابلیت چند زبانی</description>
