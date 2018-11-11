@@ -79,7 +79,6 @@
     <Compile Include="ComplexType\_HistoryLog.cs" />
     <Compile Include="ComplexType\_History.cs" />
     <Compile Include="Interface\IHistory.cs" />
-    <Compile Include="BaseContext.cs" />
     <Compile Include="Enum\eHistoryLog.cs" />
     <Compile Include="ExtensionMethods\ExceptionHelper.cs" />
     <Compile Include="ExtensionMethods\ExtensionException.cs" />

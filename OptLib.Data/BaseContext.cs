@@ -16,8 +16,14 @@ using OptLib.Data.ExtensionMethods;
 
 namespace QptLib.Data
 {
-    public partial class BaseContext 
+    //public interface IContext<TContext>
+    //{
+    //    void Seed(TContext context);
+    //}
+
+    public abstract partial class BaseContext/*<TContext>*/
         : DbContext, IDisposable, IObjectContextAdapter
+        //where TContext : DbContext
     {
         protected BaseContext()
             : base()
@@ -54,6 +60,69 @@ namespace QptLib.Data
             : base(existingConnection, model, contextOwnsConnection)
         {
 
+        }
+
+        public abstract void Seed(DbContext context);
+        public class DropCreateAlwaysInitializer : DropCreateDatabaseAlways<DbContext>
+        {
+            public DropCreateAlwaysInitializer()
+            {
+
+            }
+            public override void InitializeDatabase(DbContext context)
+            {
+                //    //context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
+                //, string.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+
+                try
+                {
+                    base.InitializeDatabase(context);
+                }
+                catch (Exception ex)
+                {
+
+                    //if(context.Database.Connection.State == System.Data.ConnectionState.Closed)
+                    context.Database.KillConnectionsToTheDatabase();
+                    base.InitializeDatabase(context);
+                    //throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
+                }
+            }
+
+            protected override void Seed(DbContext context)
+            {
+                this.Seed(context);
+                base.Seed(context);
+            }
+        }
+        public class CreateDatabaseIfNotExistsInitializer : CreateDatabaseIfNotExists<DbContext>
+        {
+            public CreateDatabaseIfNotExistsInitializer()
+            {
+
+            }
+            public override void InitializeDatabase(DbContext context)
+            {
+                //    //context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
+                //, string.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+
+                try
+                {
+                    base.InitializeDatabase(context);
+                }
+                catch (Exception ex)
+                {
+
+                    //if(context.Database.Connection.State == System.Data.ConnectionState.Closed)
+                    context.Database.KillConnectionsToTheDatabase();
+                    base.InitializeDatabase(context);
+                    //throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
+                }
+            }
+            protected override void Seed(DbContext context)
+            {
+                this.Seed(context);
+                base.Seed(context);
+            }
         }
 
 

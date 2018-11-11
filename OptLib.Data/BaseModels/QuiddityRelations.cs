@@ -12,7 +12,6 @@
 // <summary></summary>
 // ***********************************************************************
 using OptLib.Data.Base;
-using QptLib.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

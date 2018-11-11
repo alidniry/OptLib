@@ -136,7 +136,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CF6DE27-6B5F-40E0-9E41-121CC5C7D0EA}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
-		..\..\NuGet\Nuget Packages\OptLib.Build.bat = ..\..\NuGet\Nuget Packages\OptLib.Build.bat
+		..\..\NuGet\NugetPackages\OptLib.Build.bat = ..\..\NuGet\NugetPackages\OptLib.Build.bat
 		README.md = README.md
 	EndProjectSection
 EndProject
