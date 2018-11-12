@@ -21,55 +21,56 @@ namespace QptLib.Data
     //    void Seed(TContext context);
     //}
 
-    public abstract partial class BaseContext/*<TContext>*/
+    public abstract partial class BaseDatabaseContext<TContext>
         : DbContext, IDisposable, IObjectContextAdapter
-        //where TContext : DbContext
+        where TContext : BaseDatabaseContext<TContext>
     {
-        protected BaseContext()
+        protected BaseDatabaseContext()
             : base()
         {
 
         }
-        protected BaseContext(DbCompiledModel model)
+        protected BaseDatabaseContext(DbCompiledModel model)
             : base(model)
         {
 
         }
 
-        public BaseContext(string nameOrConnectionString)
+        public BaseDatabaseContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
 
         }
-        public BaseContext(string nameOrConnectionString, DbCompiledModel model)
+        public BaseDatabaseContext(string nameOrConnectionString, DbCompiledModel model)
             : base(nameOrConnectionString, model)
         {
 
         }
-        public BaseContext(DbConnection existingConnection, bool contextOwnsConnection)
+        public BaseDatabaseContext(DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection)
         {
 
         }
-        public BaseContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
+        public BaseDatabaseContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
             : base(objectContext, dbContextOwnsObjectContext)
         {
 
         }
-        public BaseContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
+        public BaseDatabaseContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
             : base(existingConnection, model, contextOwnsConnection)
         {
 
         }
 
-        public abstract void Seed(DbContext context);
-        public class DropCreateAlwaysInitializer : DropCreateDatabaseAlways<DbContext>
+        public abstract void Seed(TContext context);
+
+        public class DropCreateAlwaysInitializer : DropCreateDatabaseAlways<TContext>
         {
             public DropCreateAlwaysInitializer()
             {
 
             }
-            public override void InitializeDatabase(DbContext context)
+            public override void InitializeDatabase(TContext context)
             {
                 //    //context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
                 //, string.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
@@ -88,19 +89,19 @@ namespace QptLib.Data
                 }
             }
 
-            protected override void Seed(DbContext context)
+            protected override void Seed(TContext context)
             {
-                this.Seed(context);
+                context.Seed(context);
                 base.Seed(context);
             }
         }
-        public class CreateDatabaseIfNotExistsInitializer : CreateDatabaseIfNotExists<DbContext>
+        public class CreateDatabaseIfNotExistsInitializer : CreateDatabaseIfNotExists<TContext>
         {
             public CreateDatabaseIfNotExistsInitializer()
             {
 
             }
-            public override void InitializeDatabase(DbContext context)
+            public override void InitializeDatabase(TContext context)
             {
                 //    //context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
                 //, string.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
@@ -118,9 +119,9 @@ namespace QptLib.Data
                     //throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
                 }
             }
-            protected override void Seed(DbContext context)
+            protected override void Seed(TContext context)
             {
-                this.Seed(context);
+                context.Seed(context);
                 base.Seed(context);
             }
         }
