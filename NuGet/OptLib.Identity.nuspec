@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 <metadata>
 	<id>OptLib.Identity</id>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<title>OptLib.Identity</title>
 	<authors>Ali Dehghan Niry</authors>
 	<owners>Ali Dehghan Niry</owners>
@@ -14,20 +14,20 @@
 	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
 	<tags> Base </tags>
   <dependencies>
-    <dependency id="EntityFramework" version="6.1.0" />
-    <dependency id="Microsoft.AspNet.Identity.Core" version="2.2.1" />
-    <dependency id="Microsoft.AspNet.Identity.EntityFramework" version="2.2.1" />
-    <dependency id="Microsoft.AspNet.Identity.Owin" version="2.2.1" />
-    <dependency id="Microsoft.AspNet.Mvc" version="5.2.4" />
-    <dependency id="Microsoft.AspNet.Razor" version="3.2.4" />
-    <dependency id="Microsoft.AspNet.WebPages" version="3.2.4" />
+    <dependency id="EntityFramework" version="6.2.0" />
+    <dependency id="Microsoft.AspNet.Identity.Core" version="2.2.2" />
+    <dependency id="Microsoft.AspNet.Identity.EntityFramework" version="2.2.2" />
+    <dependency id="Microsoft.AspNet.Identity.Owin" version="2.2.2" />
+    <dependency id="Microsoft.AspNet.Mvc" version="5.2.6" />
+    <dependency id="Microsoft.AspNet.Razor" version="3.2.6" />
+    <dependency id="Microsoft.AspNet.WebPages" version="3.2.6" />
     <dependency id="Microsoft.Owin" version="4.0.0" />
     <dependency id="Microsoft.Owin.Host.SystemWeb" version="4.0.0" />
-    <dependency id="Microsoft.Owin.Security" version="2.1.0" />
-    <dependency id="Microsoft.Owin.Security.Cookies" version="2.1.0" />
-    <dependency id="Microsoft.Owin.Security.OAuth" version="2.1.0" />
+    <dependency id="Microsoft.Owin.Security" version="4.0.0" />
+    <dependency id="Microsoft.Owin.Security.Cookies" version="4.0.0" />
+    <dependency id="Microsoft.Owin.Security.OAuth" version="4.0.0" />
     <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
-    <dependency id="Newtonsoft.Json" version="4.5.11" />
+    <dependency id="Newtonsoft.Json" version="11.0.2" />
     <dependency id="Owin" version="1.0" />
   </dependencies>
 </metadata>

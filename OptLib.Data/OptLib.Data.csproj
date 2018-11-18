@@ -37,6 +37,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="OptLib.ExtensionMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>D:\Projects\Company Negareh\Saman\packages\OptLib.ExtensionMethods.1.0.0\lib\net461\OptLib.ExtensionMethods.dll</HintPath>
+    </Reference>
+    <Reference Include="OptLib.Globalization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>D:\Projects\Company Negareh\Saman\packages\OptLib.Globalization.1.0.0\lib\net461\OptLib.Globalization.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,16 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseConvention.cs" />
     <Compile Include="BaseDatabaseContext.cs" />
-    <Compile Include="BaseModels\QuiddityActions.cs" />
-    <Compile Include="BaseModels\QuiddityAllocationResources.cs" />
-    <Compile Include="BaseModels\QuiddityActors.cs" />
-    <Compile Include="BaseModels\QuiddityConnections.cs" />
-    <Compile Include="BaseModels\QuiddityObjects.cs" />
-    <Compile Include="BaseModels\QuiddityPositions.cs" />
-    <Compile Include="BaseModels\QuiddityPrices.cs" />
-    <Compile Include="BaseModels\QuiddityRelations.cs" />
-    <Compile Include="BaseModels\QuiddityServices.cs" />
+    <Compile Include="BaseModels\BaseHLog.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityActions.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityAllocationResources.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityActors.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityConnections.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityObjects.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityPositions.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityPrices.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityRelations.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityServices.cs" />
     <Compile Include="Base\Entity.cs" />
     <Compile Include="Base\EntityId.cs" />
     <Compile Include="Base\EntityIdDescription.cs" />
@@ -90,16 +98,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OptLib.ExtensionMethods\OptLib.ExtensionMethods.csproj">
-      <Project>{55796625-1132-4c68-b978-1af6d26fb9fe}</Project>
-      <Name>OptLib.ExtensionMethods</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OptLib.Globalization\OptLib.Globalization.csproj">
-      <Project>{cfed9544-a9c6-46df-81ac-b784ef62c2d0}</Project>
-      <Name>OptLib.Globalization</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

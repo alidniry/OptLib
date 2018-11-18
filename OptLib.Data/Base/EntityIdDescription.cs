@@ -37,6 +37,7 @@ namespace OptLib.Data.Base
             where TEntityType : EntityIdDescription<TEntity>
         {
             public Configuration()
+                : base()
             {
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
@@ -49,17 +50,25 @@ namespace OptLib.Data.Base
                 //    .HasMaxLength(25)
                 //    ;
             }
-
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// توضیحات آیتم
+        /// </summary>
+        /// <value>The name.</value>
+        //[StringLength(255)]
+        //[Column(TypeName = "nvarchar")]
+        public string Description { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdDescription{TEntity}" /> class.
         /// </summary>
         public EntityIdDescription()
             : base()
         {
-            
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdDescription{TEntity}" /> class.
@@ -68,15 +77,8 @@ namespace OptLib.Data.Base
         public EntityIdDescription(TEntity id)
             : base(id)
         {
-            
-        }
 
-        /// <summary>
-        /// توضیحات آیتم
-        /// </summary>
-        /// <value>The name.</value>
-        [StringLength(255)]
-        [Column(TypeName = "nvarchar")]
-        public string Description { get; set; }
+        }
+        #endregion
     }
 }

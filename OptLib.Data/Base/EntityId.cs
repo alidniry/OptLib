@@ -14,6 +14,7 @@
 using OptLib.Data.Base.Interface;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace OptLib.Data.Base
 {
@@ -36,22 +37,23 @@ namespace OptLib.Data.Base
             where TEntityType : EntityId<TEntity>
         {
             public Configuration()
+                : base()
             {
-                //Property(c => c.Id)
-                //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-                //    .HasColumnOrder(5)
-                //    ;
-                //Property(c => c.Name)
-                //    .HasColumnOrder(6)
-                //    ;
-                //Property(current => current.Name)
-                //    .HasMaxLength(25)
-                //    ;
             }
-
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// کد اصلی.
+        /// </summary>
+        /// <value>The identifier.</value>
+        //[Key]
+        //[Required]
+        //[Column(Order = 1)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        virtual public TEntity Id { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityId{TEntity}"/> class.
         /// </summary>
@@ -69,24 +71,16 @@ namespace OptLib.Data.Base
         {
             this.SetValue(id);
         }
-
-        /// <summary>
-        /// کد اصلی.
-        /// </summary>
-        /// <value>The identifier.</value>
-        [Key]
-        [Required]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        virtual public TEntity Id { get; set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Sets the value.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        virtual public void SetValue(TEntity id)
+        public virtual void SetValue(TEntity id)
         {
             this.Id = id;
         }
+        #endregion
     }
 }

@@ -47,6 +47,8 @@ namespace OptLib.Data.Base
         {
             public Configuration()
             {
+                //Property(c => c.Value).IsRequired();
+
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 //    .HasColumnOrder(5)
@@ -61,7 +63,15 @@ namespace OptLib.Data.Base
 
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// ایتم مقدار
+        /// </summary>
+        /// <value>The name.</value>
+        //[Required]
+        public TEntity Value { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdValueNameDescription{TEntity}"/> class.
         /// </summary>
@@ -100,14 +110,8 @@ namespace OptLib.Data.Base
         {
             SetValue(value);
         }
-
-        /// <summary>
-        /// ایتم مقدار
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
-        public TEntity Value { get; set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Sets the value.
         /// </summary>
@@ -127,5 +131,6 @@ namespace OptLib.Data.Base
             base.SetValue(id);
             this.SetValue(name);
         }
+        #endregion
     }
 }

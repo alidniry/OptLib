@@ -14,6 +14,8 @@
 
 using OptLib.Data.Base.Interface;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 
 namespace OptLib.Data.Base
 {
@@ -28,50 +30,37 @@ namespace OptLib.Data.Base
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TEntityType>
+            : EntityTypeConfiguration<TEntityType>
             where TEntityType : Entity
         {
             public Configuration()
+                 : base()
             {
-                //Property(c => c.Id)
-                //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-                //    .HasColumnOrder(5)
-                //    ;
-                //Property(c => c.Name)
-                //    .HasColumnOrder(6)
-                //    ;
-                //Property(current => current.Name)
-                //    .HasMaxLength(25)
-                //    ;
+                //Property(c => c.Active).IsRequired();
+                //Property(c => c.Lock).IsRequired();
+                //Property(c => c.Visible).IsRequired();
             }
         }
-        #endregion /Configuration
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity" /> class.
-        /// </summary>
-        public Entity()
-        {
-
-        }
+        #endregion
+        #region Properties
         /// <summary>
         /// فعال بودن آیتم.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
         virtual public bool Active { get; set; } = true;
         /// <summary>
         /// قفل بودن آیتم
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
         virtual public bool Lock { get; set; } = false;
 
         /// <summary>
         /// قابل رویت بودن آیتم.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
         virtual public bool Visible { get; set; } = true;
 
         /// <summary>
@@ -86,5 +75,31 @@ namespace OptLib.Data.Base
         /// </summary>
         //[Required]
         //virtual public bool ItemDisplayable { get; set; } = true;
+        #endregion
+        #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity" /> class.
+        /// </summary>
+        public Entity()
+        {
+
+        }
+        public Entity(bool active, bool @lock, bool visible)
+        {
+            this.SetValue(active, @lock, visible);
+        }
+        #endregion
+        #region Methods
+        /// <summary>
+        /// Sets the value.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public virtual void SetValue(bool active, bool @lock, bool visible)
+        {
+            this.Active = active;
+            this.Lock = @lock;
+            this.Visible = visible;
+        }
+        #endregion
     }
 }

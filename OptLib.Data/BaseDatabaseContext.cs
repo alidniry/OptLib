@@ -12,6 +12,9 @@ using System.Reflection;
 //using EFSecondLevelCache; //D:\[PROJECTS]\Taradis Company\ABM\packages\EFSecondLevelCache.1.2.0.0\readme.txt
 using System.Diagnostics;
 using OptLib.Data.ExtensionMethods;
+using System.Data.SqlClient;
+using OptLib.Data;
+using System.Data.Entity.Migrations;
 //using TRDc.ExtensionException;
 
 namespace QptLib.Data
@@ -25,45 +28,92 @@ namespace QptLib.Data
         : DbContext, IDisposable, IObjectContextAdapter
         where TContext : BaseDatabaseContext<TContext>
     {
+        public static bool _InitialCreation = false;
+        public bool InitialCreation { get { return _InitialCreation; } set { _InitialCreation = value; } }
+
+
         protected BaseDatabaseContext()
             : base()
         {
-
+            InitializeDatabase();
         }
         protected BaseDatabaseContext(DbCompiledModel model)
             : base(model)
         {
-
+            InitializeDatabase();
         }
 
         public BaseDatabaseContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-
+            InitializeDatabase();
         }
         public BaseDatabaseContext(string nameOrConnectionString, DbCompiledModel model)
             : base(nameOrConnectionString, model)
         {
-
+            InitializeDatabase();
         }
         public BaseDatabaseContext(DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection)
         {
-
+            InitializeDatabase();
         }
         public BaseDatabaseContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
             : base(objectContext, dbContextOwnsObjectContext)
         {
-
+            InitializeDatabase();
         }
         public BaseDatabaseContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
             : base(existingConnection, model, contextOwnsConnection)
         {
-
+            InitializeDatabase();
         }
 
-        public abstract void Seed(TContext context);
+        private void InitializeDatabase()
+        {
+            if (!Database.Exists())
+            {
+                InitialCreation = true;
+            }
+        }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Add<BaseModelConfigurationConvention>();
+        }
+        //public abstract void Seed(TContext context);
+
+        public class CreateDatabaseIfNotExistsInitializer : CreateDatabaseIfNotExists<TContext>
+        {
+            public CreateDatabaseIfNotExistsInitializer()
+            {
+
+            }
+            public override void InitializeDatabase(TContext context)
+            {
+                //    //context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
+                //, string.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
+
+                try
+                {
+                    base.InitializeDatabase(context);
+                }
+                catch (Exception ex)
+                {
+
+                    //if(context.Database.Connection.State == System.Data.ConnectionState.Closed)
+                    context.Database.KillConnectionsToTheDatabase();
+                    base.InitializeDatabase(context);
+                    //throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
+                }
+            }
+            protected override void Seed(TContext context)
+            {
+                //context.Seed(context);
+                base.Seed(context);
+            }
+        }
         public class DropCreateAlwaysInitializer : DropCreateDatabaseAlways<TContext>
         {
             public DropCreateAlwaysInitializer()
@@ -91,13 +141,13 @@ namespace QptLib.Data
 
             protected override void Seed(TContext context)
             {
-                context.Seed(context);
+                //context.Seed(context);
                 base.Seed(context);
             }
         }
-        public class CreateDatabaseIfNotExistsInitializer : CreateDatabaseIfNotExists<TContext>
+        public class DropCreateDatabaseIfModelChangesInitializer : DropCreateDatabaseIfModelChanges<TContext>
         {
-            public CreateDatabaseIfNotExistsInitializer()
+            public DropCreateDatabaseIfModelChangesInitializer()
             {
 
             }
@@ -121,11 +171,108 @@ namespace QptLib.Data
             }
             protected override void Seed(TContext context)
             {
-                context.Seed(context);
+                //context.Seed(context);
                 base.Seed(context);
             }
         }
 
+        //public class MigrateDatabaseToLatestVersionInitializer<TContext, TMigrationsConfiguration>
+        //    : MigrateDatabaseToLatestVersion<TContext, TMigrationsConfiguration> 
+        //    //, IDatabaseInitializer<TContext>
+        //    where TContext : DbContext
+        //    where TMigrationsConfiguration : DbMigrationsConfiguration<TContext>, new()
+        //{
+        //    MigrateDatabaseToLatestVersionInitializer()
+        //        : base()
+        //    {
+        //    }
+        //    MigrateDatabaseToLatestVersionInitializer(bool useSuppliedContext)
+        //         : base(useSuppliedContext)
+        //    {
+        //    }
+        //    MigrateDatabaseToLatestVersionInitializer(string connectionStringName)
+        //        : base(connectionStringName)
+        //    {
+        //    }
+        //    MigrateDatabaseToLatestVersionInitializer(bool useSuppliedContext, TMigrationsConfiguration configuration)
+        //        : base(useSuppliedContext, configuration)
+        //    {
+        //    }
+        //}
+
+        private static bool CheckDatabaseExists(SqlConnection tmpConn, string databaseName)
+        {
+            string sqlCreateDBQuery;
+            bool result = false;
+
+            try
+            {
+                tmpConn = new SqlConnection("server=(local)\\SQLEXPRESS;Trusted_Connection=yes");
+
+                sqlCreateDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", databaseName);
+
+                using (tmpConn)
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand(sqlCreateDBQuery, tmpConn))
+                    {
+                        tmpConn.Open();
+
+                        object resultObj = sqlCmd.ExecuteScalar();
+
+                        int databaseID = 0;
+
+                        if (resultObj != null)
+                        {
+                            int.TryParse(resultObj.ToString(), out databaseID);
+                        }
+
+                        tmpConn.Close();
+
+                        result = (databaseID > 0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+        public static bool CheckDatabaseExists(string connectionString, string databaseName)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand($"SELECT db_id('{databaseName}')", connection))
+                {
+                    connection.Open();
+                    return (command.ExecuteScalar() != DBNull.Value);
+                }
+            }
+        }
+
+        public static DbContext GetDbContextFromEntity(object entity)
+        {
+            var object_context = GetObjectContextFromEntity(entity);
+
+            if (object_context == null || object_context.TransactionHandler == null)
+                return null;
+
+            return object_context.TransactionHandler.DbContext;
+        }
+        private static ObjectContext GetObjectContextFromEntity(object entity)
+        {
+            var field = entity.GetType().GetField("_entityWrapper");
+
+            if (field == null)
+                return null;
+
+            var wrapper = field.GetValue(entity);
+            var property = wrapper.GetType().GetProperty("Context");
+            var context = (ObjectContext)property.GetValue(wrapper, null);
+
+            return context;
+        }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
@@ -189,6 +336,19 @@ namespace QptLib.Data
             }
             catch (DbEntityValidationException ex)
             {
+                //var errorMessages = ex.EntityValidationErrors
+                //    .SelectMany(x => x.ValidationErrors)
+                //    .Select(x => x.ErrorMessage);
+
+                //// Join the list to a single string.
+                //var fullErrorMessage = string.Join(" ; ", errorMessages);
+
+                //// Combine the original exception message with the new one.
+                //var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                //// Throw a new DbEntityValidationException with the improved exception message.
+                //throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+
                 throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
             }
             catch (DbUpdateConcurrencyException ex)

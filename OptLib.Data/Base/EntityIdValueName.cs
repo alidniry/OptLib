@@ -41,6 +41,7 @@ namespace OptLib.Data.Base
             where TEntityType : EntityIdValueName<TEntity>
         {
             public Configuration()
+                : base()
             {
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
@@ -56,7 +57,15 @@ namespace OptLib.Data.Base
 
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// آیتم مقدار
+        /// </summary>
+        /// <value>The name.</value>
+        //[Required]
+        public TEntity Value { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdValueName{TEntity}" /> class.
         /// </summary>
@@ -95,14 +104,8 @@ namespace OptLib.Data.Base
         {
             this.SetValue(value);
         }
-
-        /// <summary>
-        /// آیتم مقدار
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
-        public TEntity Value { get; set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Sets the value.
         /// </summary>
@@ -119,8 +122,9 @@ namespace OptLib.Data.Base
         /// <param name="name">The name.</param>
         virtual public void SetValue(TEntity id, TEntity value, string name)
         {
-            base.SetValue (id);
-            this.SetValue (name);
+            base.SetValue(id);
+            this.SetValue(name);
         }
+        #endregion
     }
 }

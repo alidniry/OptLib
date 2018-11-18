@@ -15,6 +15,7 @@ using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace OptLib.Data.Base
 {
@@ -37,7 +38,14 @@ namespace OptLib.Data.Base
             where TEntityType : EntityIdName<TEntity>
         {
             public Configuration()
+                : base()
             {
+                //Property(c => c.Name)
+                //    .IsRequired()
+                //    .HasColumnType("nvarchar")
+                //    .HasColumnOrder(2)
+                //    .HasMaxLength(50)
+                //    ;
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 //    .HasColumnOrder(5)
@@ -49,10 +57,19 @@ namespace OptLib.Data.Base
                 //    .HasMaxLength(25)
                 //    ;
             }
-
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// نام آیتم
+        /// </summary>
+        /// <value>The name.</value>
+        //[Required]
+        //[StringLength(50)]
+        //[Column(Order = 2, TypeName = "nvarchar")]
+        public string Name { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdName{TEntity}" /> class.
         /// </summary>
@@ -80,16 +97,8 @@ namespace OptLib.Data.Base
         {
             this.SetValue(name);
         }
-
-        /// <summary>
-        /// نام آیتم
-        /// </summary>
-        /// <value>The name.</value>
-        [Required]
-        [StringLength(50)]
-        [Column(Order = 2, TypeName = "nvarchar")]
-        public string Name { get; set; }
-
+        #endregion
+        #region Methods
         /// <summary>
         /// Sets the value.
         /// </summary>
@@ -105,8 +114,9 @@ namespace OptLib.Data.Base
         /// <param name="name">The name.</param>
         virtual public void SetValue(TEntity id, string name)
         {
-            base.SetValue (id);
-            this.SetValue (name);
+            base.SetValue(id);
+            this.SetValue(name);
         }
+        #endregion
     }
 }

@@ -41,6 +41,7 @@ namespace OptLib.Data.Base
             where TEntityType : EntityIdNameDescription<TEntity>
         {
             public Configuration()
+                : base()
             {
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
@@ -56,14 +57,23 @@ namespace OptLib.Data.Base
 
         }
         #endregion /Configuration
-
+        #region Properties
+        /// <summary>
+        /// توضیحات ایتم
+        /// </summary>
+        /// <value>The name.</value>
+        //[StringLength(255)]
+        //[Column(TypeName = "nvarchar")]
+        public string Description { get; set; }
+        #endregion
+        #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdNameDescription{TEntity}" /> class.
         /// </summary>
         public EntityIdNameDescription()
             : base()
         {
-            
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdNameDescription{TEntity}" /> class.
@@ -72,7 +82,7 @@ namespace OptLib.Data.Base
         public EntityIdNameDescription(string name)
             : base(name)
         {
-            
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityIdNameDescription{TEntity}" /> class.
@@ -82,15 +92,8 @@ namespace OptLib.Data.Base
         public EntityIdNameDescription(TEntity id, string name)
             : base(id, name)
         {
-            
-        }
 
-        /// <summary>
-        /// توضیحات ایتم
-        /// </summary>
-        /// <value>The name.</value>
-        [StringLength(255)]
-        [Column(TypeName = "nvarchar")]
-        public string Description { get; set; }
+        }
+        #endregion
     }
 }
