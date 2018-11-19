@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : Negareh.Data
+// Assembly         : OptLib.Data
 // Author           : alidniry
 // Created          : 10-14-2018
 //
@@ -27,7 +27,7 @@ using OptLib.Data.Base;
 using OptLib.Data.Interface;
 using OptLib.Data.ComplexType;
 
-namespace Negareh.Data.bModels
+namespace OptLib.Data.bModels
 {
     /// <summary>
     /// ماهیت فعالیتها
@@ -65,7 +65,7 @@ namespace Negareh.Data.bModels
 
     }
 }
-namespace Negareh.Data.Models.ExtensionMethods
+namespace OptLib.Data.Models.ExtensionMethods
 {
     /// <summary>
     /// Class ModelsExtensions.

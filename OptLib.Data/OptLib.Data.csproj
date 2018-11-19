@@ -31,6 +31,9 @@
     <DocumentationFile>bin\Release\OptLib.Data.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -38,14 +41,18 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="OptLib.ExtensionMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>D:\Projects\Company Negareh\Saman\packages\OptLib.ExtensionMethods.1.0.0\lib\net461\OptLib.ExtensionMethods.dll</HintPath>
+      <HintPath>..\packages\OptLib.ExtensionMethods.1.0.0\lib\net461\OptLib.ExtensionMethods.dll</HintPath>
     </Reference>
     <Reference Include="OptLib.Globalization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>D:\Projects\Company Negareh\Saman\packages\OptLib.Globalization.1.0.0\lib\net461\OptLib.Globalization.dll</HintPath>
+      <HintPath>..\packages\OptLib.Globalization.1.0.0\lib\net461\OptLib.Globalization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +94,11 @@
     <Compile Include="ComplexType\_View.cs" />
     <Compile Include="ComplexType\_HistoryLog.cs" />
     <Compile Include="ComplexType\_History.cs" />
+    <Compile Include="InfrastructureLayer\IBaseDbContext.cs" />
+    <Compile Include="InfrastructureLayer\IRepository.cs" />
+    <Compile Include="InfrastructureLayer\BaseRep.cs" />
+    <Compile Include="InfrastructureLayer\Repository.cs" />
+    <Compile Include="InfrastructureLayer\UnitOfWork.cs" />
     <Compile Include="Interface\IHistory.cs" />
     <Compile Include="Enum\eHistoryLog.cs" />
     <Compile Include="ExtensionMethods\ExceptionHelper.cs" />

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 <metadata>
 	<id>OptLib.Data</id>
-	<version>1.0.2</version>
+	<version>1.0.5</version>
 	<title>OptLib.Data</title>
 	<authors>Ali Dehghan Niry</authors>
 	<owners>Ali Dehghan Niry</owners>
@@ -14,9 +14,11 @@
 	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
 	<tags>Data Base Table</tags>
     <dependencies>
-      <dependency id="EntityFramework" version="6.2.0" />
       <dependency id="OptLib.Globalization" version="1.0.0" />
       <dependency id="OptLib.ExtensionMethods" version="1.0.0" />
+      <dependency id="EntityFramework" version="6.2.0" />
+      <dependency id="AutoMapper" version="7.0.1" />
+      <dependency id="System.ValueTuple" version="4.5.0" />
     </dependencies>
 </metadata>
 <files>
