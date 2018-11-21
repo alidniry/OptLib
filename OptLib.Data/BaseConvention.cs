@@ -34,6 +34,12 @@ namespace OptLib.Data
                     p.IsRequired();
                 });
             Properties()
+                .Where(p => p.Name == "SuportOtherLanguage")
+                .Configure(p =>
+                {
+                    p.IsRequired();
+                });
+            Properties()
                 .Where(p => p.Name == "Id")
                 .Configure(p =>
                 {
