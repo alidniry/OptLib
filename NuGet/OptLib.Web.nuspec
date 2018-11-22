@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 <metadata>
-	<id>OptLib.Threading</id>
+	<id>OptLib.Web</id>
 	<version>1.0.0</version>
-	<title>OptLib.Threading</title>
+	<title>OptLib.Web</title>
 	<authors>Ali Dehghan Niry</authors>
 	<owners>Ali Dehghan Niry</owners>
 	<licenseUrl>https://github.com/alidniry/OptLib/blob/master/LICENSE</licenseUrl>
 	<projectUrl>https://github.com/alidniry/OptLib</projectUrl>
 	<iconUrl>https://github.com/alidniry/OptLib/blob/master/OptLib.jpg</iconUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
-	<description>برای آسان سازی ساختاری در کار با تردهای اجرایی</description>
+	<description>برای آسان سازی ساختاری برنامه های تحت وب MVC5</description>
 	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
-	<tags>Threading Base</tags>
+	<tags>Web Base MVC5</tags>
     <dependencies>
     </dependencies>
 </metadata>
 <files>
-	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.dll" target="lib\net461\OptLib.Threading.dll" />
-	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.pdb" target="lib\net461\OptLib.Threading.pdb" />
-	<file src="..\..\..\GitHub\OptLib\OptLib.Threading\bin\Release\OptLib.Threading.xml" target="lib\net461\OptLib.Threading.xml" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Web\bin\Release\OptLib.Web.dll" target="lib\net461\OptLib.Web.dll" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Web\bin\Release\OptLib.Web.pdb" target="lib\net461\OptLib.Web.pdb" />
+	<file src="..\..\..\GitHub\OptLib\OptLib.Web\bin\Release\OptLib.Web.xml" target="lib\net461\OptLib.Web.xml" />
 </files>
 </package>

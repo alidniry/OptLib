@@ -149,6 +149,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptLib.ExtensionMethods", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptLib.AutoMapper", "OptLib.AutoMapper\OptLib.AutoMapper.csproj", "{9F138CA4-E79F-4A4E-B1F0-67ABCB1C1A87}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{6C90B998-49C8-4C6F-A76F-F9403F576B09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Coding", "Coding", "{D506A5C8-1C44-4ABC-A8F3-12BDF0255181}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GS1", "GS1", "{ACB144F7-12DA-4CF1-BB83-C5547F0876F9}"
+	ProjectSection(SolutionItems) = preProject
+		Document\Coding\GS1\GS1_GDTI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GDTI_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_GIAI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GIAI_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_GLN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GLN_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_GRAI_Executive_Summary (1).pdf = Document\Coding\GS1\GS1_GRAI_Executive_Summary (1).pdf
+		Document\Coding\GS1\GS1_GRAI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GRAI_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_GSRN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GSRN_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_GTIN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GTIN_Executive_Summary.pdf
+		Document\Coding\GS1\GS1_SSCC_Executive_Summary.pdf = Document\Coding\GS1\GS1_SSCC_Executive_Summary.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -330,6 +346,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C90B998-49C8-4C6F-A76F-F9403F576B09} = {4CF6DE27-6B5F-40E0-9E41-121CC5C7D0EA}
+		{D506A5C8-1C44-4ABC-A8F3-12BDF0255181} = {6C90B998-49C8-4C6F-A76F-F9403F576B09}
+		{ACB144F7-12DA-4CF1-BB83-C5547F0876F9} = {D506A5C8-1C44-4ABC-A8F3-12BDF0255181}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06E26544-7F07-4F72-ADDE-E60AD091B33B}
