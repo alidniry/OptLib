@@ -6,25 +6,31 @@
 // Last Modified By : alidniry
 // Last Modified On : 07-10-1397
 // ***********************************************************************
-// <copyright file="QuiddityAction.cs" company="">
+// <copyright file="BaseQuiddityObject.cs" company="">
 //     Copyright ©  2018
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 using OptLib.Data.Base;
-using OptLib.Data.Base.Interface;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using OptLib.Data.ComplexType;
 using OptLib.Data.Interface;
-using System.ComponentModel.DataAnnotations.Schema;
+using OptLib.Data.Base.Interface;
 
 namespace OptLib.Data.BaseModels
 {
     /// <summary>
-    /// ماهیت ها
+    /// ماهیت اشیاء
     /// </summary>
-    public abstract partial class BaseQuiddity<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
-        : EntityId<long>,
-        IEntity, IId<long>, IEntityId<long>, IHistory
+    /// <seealso cref="OptLib.Data.Base.EntityIdName{System.Int64}" />
+    public abstract partial class BaseQuiddityObject<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
+        : EntityIdName<ulong>,
+        IEntity, IId<ulong>, IEntityId<ulong>, IEntityIdName<ulong>
         where TModelQuiddity : BaseQuiddity<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
         where TModelQuiddityAction : BaseQuiddityAction<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
         where TModelQuiddityActor : BaseQuiddityActor<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
@@ -38,56 +44,53 @@ namespace OptLib.Data.BaseModels
     {
         #region Configuration
         public class Configuration
-            : EntityId<long>.Configuration<TModelQuiddity>
+            : EntityIdName<ulong>.Configuration<TModelQuiddityObject>
         {
             public Configuration()
             {
+                Property(c => c.Id)
+                    .IsRequired()
+                    .HasColumnOrder(1)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                    ;
 
+                Property(c => c.Name)
+                    .IsRequired()
+                    .HasColumnType("nvarchar")
+                    .HasColumnOrder(2)
+                    .HasMaxLength(128)
+                    ;
+
+                HasRequired(c => c.Quiddity)
+                   .WithOptional(c => c.QuiddityObject)
+                   .WillCascadeOnDelete(true)
+                   ;
             }
-
         }
         #endregion /Configuration
         #region Properties
-        public virtual _History History { get; set; } = new _History();
-        public virtual TModelQuiddityAction QuiddityAction { get; set; }
-        public virtual TModelQuiddityActor QuiddityActor { get; set; }
-        public virtual TModelQuiddityAllocationResource QuiddityAllocationResource { get; set; }
-        public virtual TModelQuiddityConnection QuiddityConnection { get; set; }
-        public virtual TModelQuiddityObject QuiddityObject { get; set; }
-        public virtual TModelQuiddityPosition QuiddityPosition { get; set; }
-        public virtual TModelQuiddityPrice QuiddityPrice { get; set; }
-        public virtual TModelQuiddityRelation QuiddityRelation { get; set; }
-        public virtual TModelQuiddityService QuiddityService { get; set; }
+        public virtual TModelQuiddity Quiddity { get; set; }
         #endregion
         #region Constructors
-        public BaseQuiddity()
+        public BaseQuiddityObject()
             : base()
         {
 
         }
-        public BaseQuiddity(long id)
-            : base(id)
+        public BaseQuiddityObject(string name)
+            : base(name)
         {
 
         }
-        public BaseQuiddity(_History history)
-            : base()
+        public BaseQuiddityObject(ulong id, string name)
+            : base(id, name)
         {
-            this.SetValue(history);
-        }
-        public BaseQuiddity(long id, _History history)
-            : base(id)
-        {
-            this.SetValue(history);
+
         }
         #endregion
         #region Static Methods
         #endregion
         #region Methods
-        public void SetValue(_History history)
-        {
-            this.History = history;
-        }
         #endregion
     }
 }
@@ -95,7 +98,7 @@ namespace OptLib.Data.Models.ExtensionMethods
 {
     public static partial class ModelsExtensions
     {
-        //public static BaseQuiddity GetItem(this List<BaseQuiddity> list, string name)
+        //public static BaseQuiddityObject GetItem(this List<BaseQuiddityObject> list, string name)
         //{
         //    return list.Find(x => x.Name == name);
         //}

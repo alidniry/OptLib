@@ -6,40 +6,39 @@
 // Last Modified By : alidniry
 // Last Modified On : 07-10-1397
 // ***********************************************************************
-// <copyright file="QuiddityActor.cs" company="">
+// <copyright file="QuiddityAction.cs" company="">
 //     Copyright ©  2018
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 using OptLib.Data.Base;
-using OptLib.Data.ComplexType;
-using OptLib.Data.Interface;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Spatial;
-using OptLib.Data.ComplexType;
-using OptLib.Data.Interface;
 using OptLib.Data.Base.Interface;
+using OptLib.Data.ComplexType;
+using OptLib.Data.Interface;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OptLib.Data.BaseModels
 {
     /// <summary>
-    /// ماهیت عاملین
+    /// ماهیت فعالیتها
     /// </summary>
-    public abstract partial class BaseQuiddityActor
-        : BaseQuiddity,
+    public abstract partial class BaseQuiddityAction
+        : EntityIdName<long>,
         IEntity, IId<long>, IEntityId<long>, IEntityIdName<long>, IHistory
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : BaseQuiddity.Configuration<TEntityType>
-            where TEntityType : BaseQuiddityActor
+            : EntityId<long>.Configuration<TEntityType>
+            where TEntityType : BaseQuiddityAction
         {
             public Configuration()
             {
+                Property(c => c.Id)
+                    .IsRequired()
+                    .HasColumnOrder(1)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                    ;
+
                 Property(c => c.Name)
                     .IsRequired()
                     .HasColumnType("nvarchar")
@@ -51,6 +50,9 @@ namespace OptLib.Data.BaseModels
         }
         #endregion /Configuration
         #region Properties
+        public _History History { get; set; } = new _History();
+        public virtual BaseQuiddity BaseQuiddity { get; set; }
+
         /// <summary>
         /// نام آیتم
         /// </summary>
@@ -58,36 +60,36 @@ namespace OptLib.Data.BaseModels
         //[Required]
         //[StringLength(50)]
         //[Column(Order = 2, TypeName = "nvarchar")]
-        public virtual string Name { get; set; }
+        //public virtual string Name { get; set; }
         #endregion
         #region Constructors
-        public BaseQuiddityActor()
+        public BaseQuiddityAction()
             : base()
         {
 
         }
-        public BaseQuiddityActor(_History history)
+        public BaseQuiddityAction(_History history)
             : base()
         {
             this.SetValue(history);
         }
-        public BaseQuiddityActor(string name)
+        public BaseQuiddityAction(string name)
             : base()
         {
             this.SetValue(name);
         }
-        public BaseQuiddityActor(string name, _History history)
+        public BaseQuiddityAction(string name, _History history)
             : base()
         {
             this.SetValue(name);
             this.SetValue(history);
         }
-        public BaseQuiddityActor(long id, string name)
+        public BaseQuiddityAction(long id, string name)
             : base(id)
         {
             this.SetValue(name);
         }
-        public BaseQuiddityActor(long id, string name, _History history)
+        public BaseQuiddityAction(long id, string name, _History history)
             : base(id)
         {
             this.SetValue(name);
@@ -107,6 +109,10 @@ namespace OptLib.Data.BaseModels
             this.Id = id;
             this.SetValue(name);
         }
+        public void SetValue(_History history)
+        {
+            this.History = history;
+        }
         #endregion
     }
 }
@@ -114,7 +120,7 @@ namespace OptLib.Data.Models.ExtensionMethods
 {
     public static partial class ModelsExtensions
     {
-        //public static BaseQuiddityActor GetItem(this List<BaseQuiddityActor> list, string name)
+        //public static BaseQuiddityAction GetItem(this List<BaseQuiddityAction> list, string name)
         //{
         //    return list.Find(x => x.Name == name);
         //}

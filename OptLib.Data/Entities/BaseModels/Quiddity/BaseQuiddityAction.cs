@@ -20,11 +20,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OptLib.Data.BaseModels
 {
     /// <summary>
-    /// ماهیت ها
+    /// ماهیت فعالیتها
     /// </summary>
-    public abstract partial class BaseQuiddity<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
-        : EntityId<long>,
-        IEntity, IId<long>, IEntityId<long>, IHistory
+    public abstract partial class BaseQuiddityAction<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
+        : EntityIdName<ulong>,
+        IEntity, IId<ulong>, IEntityId<ulong>, IEntityIdName<ulong>/*, IHistory*/
         where TModelQuiddity : BaseQuiddity<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
         where TModelQuiddityAction : BaseQuiddityAction<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
         where TModelQuiddityActor : BaseQuiddityActor<TModelQuiddity, TModelQuiddityAction, TModelQuiddityActor, TModelQuiddityAllocationResource, TModelQuiddityConnection, TModelQuiddityObject, TModelQuiddityPosition, TModelQuiddityPrice, TModelQuiddityRelation, TModelQuiddityService>
@@ -38,56 +38,53 @@ namespace OptLib.Data.BaseModels
     {
         #region Configuration
         public class Configuration
-            : EntityId<long>.Configuration<TModelQuiddity>
+            : EntityIdName<ulong>.Configuration<TModelQuiddityAction>
         {
             public Configuration()
             {
+                Property(c => c.Id)
+                    .IsRequired()
+                    .HasColumnOrder(1)
+                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                    ;
 
+                Property(c => c.Name)
+                    .IsRequired()
+                    .HasColumnType("nvarchar")
+                    .HasColumnOrder(2)
+                    .HasMaxLength(128)
+                    ;
+
+                HasRequired(c => c.Quiddity)
+                   .WithOptional(c => c.QuiddityAction)
+                   .WillCascadeOnDelete(true)
+                   ;
             }
-
         }
         #endregion /Configuration
         #region Properties
-        public virtual _History History { get; set; } = new _History();
-        public virtual TModelQuiddityAction QuiddityAction { get; set; }
-        public virtual TModelQuiddityActor QuiddityActor { get; set; }
-        public virtual TModelQuiddityAllocationResource QuiddityAllocationResource { get; set; }
-        public virtual TModelQuiddityConnection QuiddityConnection { get; set; }
-        public virtual TModelQuiddityObject QuiddityObject { get; set; }
-        public virtual TModelQuiddityPosition QuiddityPosition { get; set; }
-        public virtual TModelQuiddityPrice QuiddityPrice { get; set; }
-        public virtual TModelQuiddityRelation QuiddityRelation { get; set; }
-        public virtual TModelQuiddityService QuiddityService { get; set; }
+        public virtual TModelQuiddity Quiddity { get; set; }
         #endregion
         #region Constructors
-        public BaseQuiddity()
+        public BaseQuiddityAction()
             : base()
         {
 
         }
-        public BaseQuiddity(long id)
-            : base(id)
+        public BaseQuiddityAction(string name)
+            : base(name)
         {
 
         }
-        public BaseQuiddity(_History history)
-            : base()
+        public BaseQuiddityAction(ulong id, string name)
+            : base(id, name)
         {
-            this.SetValue(history);
-        }
-        public BaseQuiddity(long id, _History history)
-            : base(id)
-        {
-            this.SetValue(history);
+
         }
         #endregion
         #region Static Methods
         #endregion
         #region Methods
-        public void SetValue(_History history)
-        {
-            this.History = history;
-        }
         #endregion
     }
 }
@@ -95,7 +92,7 @@ namespace OptLib.Data.Models.ExtensionMethods
 {
     public static partial class ModelsExtensions
     {
-        //public static BaseQuiddity GetItem(this List<BaseQuiddity> list, string name)
+        //public static BaseQuiddityAction GetItem(this List<BaseQuiddityAction> list, string name)
         //{
         //    return list.Find(x => x.Name == name);
         //}
