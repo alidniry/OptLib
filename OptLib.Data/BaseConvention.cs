@@ -15,6 +15,7 @@ namespace OptLib.Data
             //Properties()
             //    .Where(p => p.Name == p.DeclaringType.Name + "Id")
             //    .Configure(p => p.IsKey());
+
             Properties()
                 .Where(p => p.Name == "Active")
                 .Configure(p =>

@@ -80,7 +80,7 @@ namespace QptLib.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Add<BaseModelConfigurationConvention>();
+            //modelBuilder.Conventions.Add<BaseModelConfigurationConvention>();
         }
         //public abstract void Seed(TContext context);
 

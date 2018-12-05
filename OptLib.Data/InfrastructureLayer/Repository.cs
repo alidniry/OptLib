@@ -169,7 +169,7 @@ namespace OptLib.Data.InfrastructureLayer
             {
                 using (var ctx = new TDbCtx())
                 {
-                    var old = ctx.Set<TEntity>().Find(((IEntityId<long>)entity).Id);
+                    var old = ctx.Set<TEntity>().Find(((IEntityBaseId<long>)entity).Id);
                     TEntitylog OldlogDTO = Mapper.Map<TEntity, TEntitylog>(old);
                     ((IHistoryLog<long>)OldlogDTO).HistoryLog =
                         new OptLib.Data.ComplexType._HistoryLog(this.MemberId, eHistoryLog.CHANGE);
