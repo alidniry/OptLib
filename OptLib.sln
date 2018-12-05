@@ -155,14 +155,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Coding", "Coding", "{D506A5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GS1", "GS1", "{ACB144F7-12DA-4CF1-BB83-C5547F0876F9}"
 	ProjectSection(SolutionItems) = preProject
+		Document\Coding\GS1\GenSpec-v15-sec-01-last.pdf = Document\Coding\GS1\GenSpec-v15-sec-01-last.pdf
 		Document\Coding\GS1\GS1_GDTI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GDTI_Executive_Summary.pdf
 		Document\Coding\GS1\GS1_GIAI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GIAI_Executive_Summary.pdf
 		Document\Coding\GS1\GS1_GLN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GLN_Executive_Summary.pdf
-		Document\Coding\GS1\GS1_GRAI_Executive_Summary (1).pdf = Document\Coding\GS1\GS1_GRAI_Executive_Summary (1).pdf
 		Document\Coding\GS1\GS1_GRAI_Executive_Summary.pdf = Document\Coding\GS1\GS1_GRAI_Executive_Summary.pdf
 		Document\Coding\GS1\GS1_GSRN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GSRN_Executive_Summary.pdf
 		Document\Coding\GS1\GS1_GTIN_Executive_Summary.pdf = Document\Coding\GS1\GS1_GTIN_Executive_Summary.pdf
 		Document\Coding\GS1\GS1_SSCC_Executive_Summary.pdf = Document\Coding\GS1\GS1_SSCC_Executive_Summary.pdf
+		Document\Coding\GS1\آموزش-مقدماتی-سیستم-GS1-نهایی.pdf = Document\Coding\GS1\آموزش-مقدماتی-سیستم-GS1-نهایی.pdf
 	EndProjectSection
 EndProject
 Global
