@@ -28,8 +28,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
     /// ماهیت موقعیت
     /// </summary>
     public abstract partial class ModalityPosition<TKey, TModalityQdtPosition>
-        : EntityId<TKey>,
-        IEntity, IId<TKey>, IEntityId<TKey>
+        : EntityIdCPKey<TKey>,
+        IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdCPKey<TKey>
         where TModalityQdtPosition : ModalityPosition<TKey, TModalityQdtPosition>
     {
         #region Configuration
@@ -48,10 +48,10 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         }
         #endregion
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
         #endregion
         #region Constructors
         public ModalityPosition()
@@ -59,8 +59,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         {
 
         }
-        public ModalityPosition(TKey id)
-            : base(id)
+        public ModalityPosition(TKey id, long cpKey)
+            : base(id, cpKey)
         {
 
         }

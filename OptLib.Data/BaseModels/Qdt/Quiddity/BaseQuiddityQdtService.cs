@@ -67,8 +67,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtService(long id, string name)
-            : base(id, name)
+        public BaseQdtService(long id, long cpKey, string name)
+            : base(id, cpKey, name)
         {
 
         }

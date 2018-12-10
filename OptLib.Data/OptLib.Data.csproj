@@ -74,7 +74,7 @@
     <Compile Include="BaseEntities\IEntityIdCPKey.cs" />
     <Compile Include="BaseEntities\IEntityIdCPKeyName.cs" />
     <Compile Include="BaseModels\BaseHLog.cs" />
-    <Compile Include="BaseModality\Qdt\ModalityQuiddity.cs" />
+    <Compile Include="BaseModality\Qdt\Quiddity\ModalityQuiddity.cs" />
     <Compile Include="BaseModality\Qdt\Quiddity\ModalityAction.cs" />
     <Compile Include="BaseModality\Qdt\Quiddity\ModalityActor.cs" />
     <Compile Include="BaseModality\Qdt\Quiddity\ModalityAllocationResource.cs" />
@@ -84,7 +84,7 @@
     <Compile Include="BaseModels\Qdt\BaseQdtConnection.cs" />
     <Compile Include="BaseModels\Qdt\BaseQdtPrice.cs" />
     <Compile Include="BaseModels\Qdt\BaseQdtRelation.cs" />
-    <Compile Include="BaseModels\Qdt\BaseQdtQuiddity.cs" />
+    <Compile Include="BaseModels\Qdt\Quiddity\BaseQdtQuiddity.cs" />
     <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtAction.cs" />
     <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtActor.cs" />
     <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtAllocationResource.cs" />

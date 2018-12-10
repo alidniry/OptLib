@@ -30,8 +30,8 @@ namespace OptLib.Data.BaseModels.Qdt
     /// ماهیت ارتباطات داده ای
     /// </summary>
     public abstract partial class BaseQdtRelation<TModalityQdtRelation>
-        : EntityBaseId<long>,
-        IEntity, IId<long>, IEntityId<long>, IHistory
+        : EntityBaseIdCPKey<long>,
+        IEntity, IId<long>, IEntityId<long>, IEntityBase, IEntityBaseId<long>, IEntityBaseIdCPKey<long>, IHistory
         where TModalityQdtRelation : BaseQdtRelation<TModalityQdtRelation>
     {
         #region Configuration
@@ -55,10 +55,10 @@ namespace OptLib.Data.BaseModels.Qdt
         }
         #endregion
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
 
         public virtual _History History { get; set; } = new _History();
         #endregion
@@ -68,8 +68,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
 
         }
-        public BaseQdtRelation(long id)
-            : base(id)
+        public BaseQdtRelation(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }
@@ -78,8 +78,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
             this.SetValue(history);
         }
-        public BaseQdtRelation(long id, _History history)
-            : base(id)
+        public BaseQdtRelation(long id, long cpKey, _History history)
+            : base(id, cpKey)
         {
             this.SetValue(history);
         }

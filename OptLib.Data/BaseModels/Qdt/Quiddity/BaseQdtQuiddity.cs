@@ -92,8 +92,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtQuiddity(long id)
-            : base(id)
+        public BaseQdtQuiddity(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }
@@ -102,8 +102,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtQuiddity(long id, _History history)
-            : base(id, history)
+        public BaseQdtQuiddity(long id, long cpKey, _History history)
+            : base(id, cpKey, history)
         {
 
         }

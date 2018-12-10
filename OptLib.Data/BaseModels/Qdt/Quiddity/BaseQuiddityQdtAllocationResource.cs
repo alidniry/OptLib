@@ -63,8 +63,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtAllocationResource(long id, string name)
-            : base(id, name)
+        public BaseQdtAllocationResource(long id, long cpKey, string name)
+            : base(id, cpKey, name)
         {
 
         }

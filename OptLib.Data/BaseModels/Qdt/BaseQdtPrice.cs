@@ -30,8 +30,8 @@ namespace OptLib.Data.BaseModels.Qdt
     /// ماهیت قیمتها
     /// </summary>
     public abstract partial class BaseQdtPrice<TModalityQdtPrice>
-        : EntityBaseId<long>,
-        IEntity, IId<long>, IEntityId<long>, IHistory
+        : EntityBaseIdCPKey<long>,
+        IEntity, IId<long>, IEntityId<long>, IEntityBase, IEntityBaseId<long>, IEntityBaseIdCPKey<long>, IHistory
         where TModalityQdtPrice : BaseQdtPrice<TModalityQdtPrice>
     {
         #region Configuration
@@ -55,10 +55,10 @@ namespace OptLib.Data.BaseModels.Qdt
         }
         #endregion /Configuration
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
 
         public virtual _History History { get; set; } = new _History();
 
@@ -69,8 +69,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
 
         }
-        public BaseQdtPrice(long id)
-            : base(id)
+        public BaseQdtPrice(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }
@@ -79,8 +79,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
             this.SetValue(history);
         }
-        public BaseQdtPrice(long id, _History history)
-            : base(id)
+        public BaseQdtPrice(long id, long cpKey, _History history)
+            : base(id, cpKey)
         {
             this.SetValue(history);
         }

@@ -28,8 +28,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
     /// ماهیت تخصیص منابع
     /// </summary>
     public abstract partial class ModalityAllocationResource<TKey, TModalityQdtAllocationResource>
-        : EntityIdName<TKey>,
-        IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>
+        : EntityIdCPKeyName<TKey>,
+        IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>, IEntityIdCPKey<TKey>
         where TModalityQdtAllocationResource : ModalityAllocationResource<TKey, TModalityQdtAllocationResource>
     {
         #region Configuration
@@ -54,10 +54,10 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         }
         #endregion
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
 
         #endregion
         #region Constructors
@@ -71,8 +71,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         {
 
         }
-        public ModalityAllocationResource(TKey id, string name)
-            : base(id, name)
+        public ModalityAllocationResource(TKey id, long cpKey, string name)
+            : base(id, cpKey, name)
         {
 
         }

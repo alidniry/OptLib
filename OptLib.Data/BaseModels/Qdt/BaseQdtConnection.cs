@@ -30,8 +30,8 @@ namespace OptLib.Data.BaseModels.Qdt
     /// ماهیت اتصال تماس
     /// </summary>
     public abstract partial class BaseQdtConnection<TModalityQdtConnection>
-        : EntityBaseId<long>,
-        IEntity, IId<long>, IEntityId<long>, IHistory
+        : EntityBaseIdCPKey<long>,
+        IEntity, IId<long>, IEntityId<long>, IEntityBase, IEntityBaseId<long>, IEntityBaseIdCPKey<long>, IHistory
         where TModalityQdtConnection : BaseQdtConnection<TModalityQdtConnection>
     {
         #region Configuration
@@ -69,8 +69,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
 
         }
-        public BaseQdtConnection(long id)
-            : base(id)
+        public BaseQdtConnection(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }
@@ -79,8 +79,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
             this.SetValue(history);
         }
-        public BaseQdtConnection(long id, _History history)
-            : base(id)
+        public BaseQdtConnection(long id, long cpKey, _History history)
+            : base(id, cpKey)
         {
             this.SetValue(history);
         }

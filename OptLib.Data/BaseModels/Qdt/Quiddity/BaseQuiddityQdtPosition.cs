@@ -51,12 +51,6 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         #endregion /Configuration
         #region Properties
         public virtual TModalityQdtQuiddity Quiddity { get; set; }
-
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
-
         #endregion
         #region Constructors
         public BaseQdtPosition()
@@ -64,8 +58,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtPosition(long id)
-            : base(id)
+        public BaseQdtPosition(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }

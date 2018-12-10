@@ -23,8 +23,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
     /// ماهیت فعالیتها
     /// </summary>
     public abstract partial class ModalityAction<TKey, TModalityQdtAction>
-        : EntityIdName<TKey>,
-        IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>
+        : EntityIdCPKeyName<TKey>,
+        IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>, IEntityIdCPKeyName<TKey>
         where TModalityQdtAction : ModalityAction<TKey, TModalityQdtAction>
     {
         #region Configuration
@@ -49,10 +49,10 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         }
         #endregion
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
 
         #endregion
         #region Constructors
@@ -66,8 +66,8 @@ namespace OptLib.Data.BaseModality.Qdt.Quiddity
         {
 
         }
-        public ModalityAction(TKey id, string name)
-            : base(id, name)
+        public ModalityAction(TKey id, long cpKey, string name)
+            : base(id, cpKey, name)
         {
 
         }

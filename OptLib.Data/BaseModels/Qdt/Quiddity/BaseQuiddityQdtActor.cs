@@ -60,8 +60,8 @@ namespace OptLib.Data.BaseModels.Qdt.Quiddity
         {
 
         }
-        public BaseQdtActor(long id)
-            : base(id)
+        public BaseQdtActor(long id, long cpKey)
+            : base(id, cpKey)
         {
 
         }

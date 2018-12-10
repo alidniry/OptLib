@@ -24,8 +24,8 @@ namespace OptLib.Data.BaseModality.Qdt
     /// ماهیت ها
     /// </summary>
     public abstract partial class ModalityQuiddity<TKey, TModalityQdtQuiddity>
-        : EntityBaseId<TKey>,
-        IEntityBase, IId<TKey>, IEntityBaseId<TKey>, IHistory
+        : EntityBaseIdCPKey<TKey>,
+        IEntityBase, IId<TKey>, IEntityBaseId<TKey>, IEntityBaseIdCPKey<TKey>, IHistory
         where TModalityQdtQuiddity : ModalityQuiddity<TKey, TModalityQdtQuiddity>
     {
         #region Configuration
@@ -34,20 +34,20 @@ namespace OptLib.Data.BaseModality.Qdt
         {
             public Configuration()
             {
-                HasKey(c => new { c.Id, c.CPKey })
-                    ;
-                Property(c => c.CPKey)
-                    .HasColumnOrder(2)
-                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-                    ;
+                //HasKey(c => new { c.Id, c.CPKey })
+                //    ;
+                //Property(c => c.CPKey)
+                //    .HasColumnOrder(2)
+                //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                //    ;
             }
         }
         #endregion
         #region Properties
-        /// <summary>
-        /// GS1 Company Prefix Key
-        /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        ///// <summary>
+        ///// GS1 Company Prefix Key
+        ///// </summary>
+        //public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
 
         public virtual _History History { get; set; } = new _History();
 
@@ -58,8 +58,8 @@ namespace OptLib.Data.BaseModality.Qdt
         {
 
         }
-        public ModalityQuiddity(TKey id)
-            : base(id)
+        public ModalityQuiddity(TKey id, long cpKey)
+            : base(id, cpKey)
         {
 
         }
@@ -68,8 +68,8 @@ namespace OptLib.Data.BaseModality.Qdt
         {
             this.SetValue(history);
         }
-        public ModalityQuiddity(TKey id, _History history)
-            : base(id)
+        public ModalityQuiddity(TKey id, long cpKey, _History history)
+            : base(id, cpKey)
         {
             this.SetValue(history);
         }
