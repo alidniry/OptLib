@@ -41,11 +41,5 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <param name="name">The name.</param>
         void SetValue(string name);
-        /// <summary>
-        /// Sets the value.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="name">The name.</param>
-        void SetValue(TKey id, string name);
     }
 }

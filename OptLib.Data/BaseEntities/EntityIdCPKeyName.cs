@@ -23,13 +23,13 @@ namespace OptLib.Data.Base
     /// کلاس اولیه مدلهای شامل
     /// Id, Name
     /// </summary>
-    public abstract class EntityIdName<TKey>
-        : EntityId<TKey>, IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>
+    public abstract class EntityIdCPKeyName<TKey>
+        : EntityIdCPKey<TKey>, IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>, IEntityIdCPKey<TKey>, IEntityIdCPKeyName<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : EntityId<TKey>.Configuration<TEntityType>
-            where TEntityType : EntityIdName<TKey>
+            : EntityIdCPKey<TKey>.Configuration<TEntityType>
+            where TEntityType : EntityIdCPKeyName<TKey>
         {
             public Configuration()
                 : base()
@@ -67,7 +67,7 @@ namespace OptLib.Data.Base
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.
         /// </summary>
-        public EntityIdName()
+        public EntityIdCPKeyName()
             : base()
         {
             this.SetValue("Default");
@@ -76,7 +76,7 @@ namespace OptLib.Data.Base
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public EntityIdName(string name)
+        public EntityIdCPKeyName(string name)
             : base()
         {
             this.SetValue(name);
@@ -86,8 +86,8 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="name">The name.</param>
-        public EntityIdName(TKey id, string name)
-            : base(id)
+        public EntityIdCPKeyName(TKey id, long cpKey, string name)
+            : base(id, cpKey)
         {
             this.SetValue(name);
         }

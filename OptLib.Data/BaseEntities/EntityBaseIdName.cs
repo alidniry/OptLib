@@ -107,16 +107,6 @@ namespace OptLib.Data.Base
         {
             this.Name = name;
         }
-        /// <summary>
-        /// Sets the value.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="name">The name.</param>
-        virtual public void SetValue(TKey id, string name)
-        {
-            base.SetValue(id);
-            this.SetValue(name);
-        }
         #endregion
     }
 }

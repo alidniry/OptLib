@@ -22,24 +22,30 @@ namespace OptLib.Data.Base
     /// <summary>
     /// کلاس اولیه مدلهای شامل
     /// Id, Name
+    /// Active, Lock, Visible, SuportOtherLanguage
     /// </summary>
-    public abstract class EntityIdName<TKey>
-        : EntityId<TKey>, IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>
+    /// <typeparam name="TKey">The type of the t entity.</typeparam>
+    /// <seealso cref="OptLib.Data.Base.EntityBaseId{TEntity}" />
+    /// <seealso cref="OptLib.Data.Base.IEntityBase" />
+    /// <seealso cref="OptLib.Data.Base.Interface.IId{TEntity}" />
+    /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
+    public abstract class EntityBaseIdCPKeyName<TKey>
+        : EntityBaseIdCPKey<TKey>, IEntityBase, IId<TKey>, IEntityBaseId<TKey>, IEntityBaseIdName<TKey>, IEntityBaseIdCPKeyName<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : EntityId<TKey>.Configuration<TEntityType>
-            where TEntityType : EntityIdName<TKey>
+            : EntityBaseIdCPKey<TKey>.Configuration<TEntityType>
+            where TEntityType : EntityBaseIdCPKeyName<TKey>
         {
             public Configuration()
                 : base()
             {
-                //Property(c => c.Name)
-                //    .IsRequired()
-                //    .HasColumnType("nvarchar")
-                //    .HasColumnOrder(2)
-                //    .HasMaxLength(50)
-                //    ;
+                Property(c => c.Name)
+                    .IsRequired()
+                    .HasColumnType("nvarchar")
+                    .HasColumnOrder(2)
+                    .HasMaxLength(50)
+                    ;
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 //    .HasColumnOrder(5)
@@ -52,7 +58,7 @@ namespace OptLib.Data.Base
                 //    ;
             }
         }
-        #endregion /Configuration
+        #endregion
         #region Properties
         /// <summary>
         /// نام آیتم
@@ -67,7 +73,7 @@ namespace OptLib.Data.Base
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.
         /// </summary>
-        public EntityIdName()
+        public EntityBaseIdCPKeyName()
             : base()
         {
             this.SetValue("Default");
@@ -76,7 +82,7 @@ namespace OptLib.Data.Base
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public EntityIdName(string name)
+        public EntityBaseIdCPKeyName(string name)
             : base()
         {
             this.SetValue(name);
@@ -86,8 +92,8 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="name">The name.</param>
-        public EntityIdName(TKey id, string name)
-            : base(id)
+        public EntityBaseIdCPKeyName(TKey id, long cpKey, string name)
+            : base(id, cpKey)
         {
             this.SetValue(name);
         }

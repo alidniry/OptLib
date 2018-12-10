@@ -6,7 +6,7 @@
 // Last Modified By : alidniry
 // Last Modified On : 10-16-2018
 // ***********************************************************************
-// <copyright file="IEntityIdName.cs" company="">
+// <copyright file="IEntityIdDescription.cs" company="">
 //     Copyright ©  2018
 // </copyright>
 // <summary></summary>
@@ -17,29 +17,24 @@ namespace OptLib.Data.Base
 {
     /// <summary>
     /// رابط کلاس اولیه مدلهای شامل
-    /// Id, Name
+    /// Id, Description
     /// Active, Lock, Visible, SuportOtherLanguage
     /// </summary>
     /// <typeparam name="TKey">The type of the t entity.</typeparam>
     /// <seealso cref="OptLib.Data.Base.Interface.IId{TEntity}" />
-    /// <seealso cref="OptLib.Data.Base.Interface.IName" />
+    /// <seealso cref="OptLib.Data.Base.IDescription" />
     /// <seealso cref="OptLib.Data.Base.IEntityBase" />
     /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
-    public interface IEntityBaseIdName<TKey>
+    public interface IEntityBaseIdCPKeyDescription<TKey>
         : IEntityBase
-        , IId<TKey>, IName
+        , IId<TKey>, IDescription
         , IEntityBaseId<TKey>
+        , IEntityBaseIdCPKey<TKey>
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// توضیحات آیتم
         /// </summary>
-        /// <value>The name.</value>
-        string Name { get; set; }
-
-        /// <summary>
-        /// Sets the value.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        void SetValue(string name);
+        /// <value>The description.</value>
+        string Description { get; set; }
     }
 }

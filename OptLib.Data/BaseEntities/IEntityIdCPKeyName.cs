@@ -25,10 +25,11 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.Interface.IName" />
     /// <seealso cref="OptLib.Data.Base.IEntityBase" />
     /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
-    public interface IEntityBaseIdName<TKey>
-        : IEntityBase
+    public interface IEntityIdCPKeyName<TKey>
+        : IEntity
         , IId<TKey>, IName
-        , IEntityBaseId<TKey>
+        , IEntityId<TKey>
+        , IEntityIdCPKey<TKey>
     {
         /// <summary>
         /// Gets or sets the name.

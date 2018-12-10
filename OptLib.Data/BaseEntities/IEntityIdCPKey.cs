@@ -6,7 +6,7 @@
 // Last Modified By : alidniry
 // Last Modified On : 10-16-2018
 // ***********************************************************************
-// <copyright file="IEntityIdName.cs" company="">
+// <copyright file="IEntityId.cs" company="">
 //     Copyright ©  2018
 // </copyright>
 // <summary></summary>
@@ -17,29 +17,26 @@ namespace OptLib.Data.Base
 {
     /// <summary>
     /// رابط کلاس اولیه مدلهای شامل
-    /// Id, Name
+    /// Id,
     /// Active, Lock, Visible, SuportOtherLanguage
     /// </summary>
     /// <typeparam name="TKey">The type of the t entity.</typeparam>
     /// <seealso cref="OptLib.Data.Base.Interface.IId{TEntity}" />
-    /// <seealso cref="OptLib.Data.Base.Interface.IName" />
     /// <seealso cref="OptLib.Data.Base.IEntityBase" />
-    /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
-    public interface IEntityBaseIdName<TKey>
-        : IEntityBase
-        , IId<TKey>, IName
-        , IEntityBaseId<TKey>
+    public interface IEntityIdCPKey<TKey>
+        : IEntityId<TKey>
+        , IId<TKey>
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// GS1 Company Prefix Key
         /// </summary>
-        /// <value>The name.</value>
-        string Name { get; set; }
+        /// <value>The identifier.</value>
+        long CPKey { get; set; }
 
         /// <summary>
         /// Sets the value.
         /// </summary>
-        /// <param name="name">The name.</param>
-        void SetValue(string name);
+        /// <param name="id">The identifier.</param>
+        void SetValue(long cpKey);
     }
 }

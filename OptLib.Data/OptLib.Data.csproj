@@ -63,6 +63,16 @@
   <ItemGroup>
     <Compile Include="BaseConvention.cs" />
     <Compile Include="BaseDatabaseContext.cs" />
+    <Compile Include="BaseEntities\EntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\EntityBaseIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\EntityBaseIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\EntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\EntityIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\IEntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\IEntityBaseIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\IEntityBaseIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\IEntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\IEntityIdCPKeyName.cs" />
     <Compile Include="BaseModels\BaseHLog.cs" />
     <Compile Include="BaseModality\Qdt\ModalityQuiddity.cs" />
     <Compile Include="BaseModality\Qdt\Quiddity\ModalityAction.cs" />
