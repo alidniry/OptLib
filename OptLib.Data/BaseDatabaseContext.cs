@@ -15,6 +15,7 @@ using OptLib.Data.ExtensionMethods;
 using System.Data.SqlClient;
 using OptLib.Data;
 using System.Data.Entity.Migrations;
+using OptLib.ExtensionMethods;
 //using TRDc.ExtensionException;
 
 namespace QptLib.Data
@@ -163,16 +164,16 @@ namespace QptLib.Data
                 catch (Exception ex)
                 {
 
-                    //if(context.Database.Connection.State == System.Data.ConnectionState.Closed)
-                    context.Database.KillConnectionsToTheDatabase();
+                    if (context.Database.Connection.State == System.Data.ConnectionState.Closed)
+                        context.Database.KillConnectionsToTheDatabase();
                     base.InitializeDatabase(context);
-                    //throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
+                    throw new Exception(ex.Error(MethodBase.GetCurrentMethod()), ex);
                 }
             }
             protected override void Seed(TContext context)
             {
-                //context.Seed(context);
                 base.Seed(context);
+                //context.Seed(context);
             }
         }
 

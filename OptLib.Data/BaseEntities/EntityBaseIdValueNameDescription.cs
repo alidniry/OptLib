@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -69,6 +70,7 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <value>The name.</value>
         //[Required]
+        [ModelMap]
         public TValue Value { get; set; }
         #endregion
         #region Constructors

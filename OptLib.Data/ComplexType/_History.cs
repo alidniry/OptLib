@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Optlib.Data.BulkCopy.Mapping;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,57 +37,70 @@ namespace OptLib.Data.ComplexType
         /// کد کاربر ایجاد کننده.
         /// </summary>
         /// <value>The create unique identifier.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_CreateID")]
         public int CreateID { get; set; }
         /// <summary>
         /// زمان ایجاد اطلاعات.
         /// </summary>
         /// <value>The create time.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_CreateDate")]
         public DateTime CreateDate { get; set; }
+
+        public long? NumberVisits { get; set; }
+        public DateTime? FirstDateVisit { get; set; }
+        public DateTime? LastDateVisit { get; set; }
 
         //Last Changes
         /// <summary>
         /// کد آخرین کاربر تغییر دهنده اطلاعات.
         /// </summary>
         /// <value>The history last changes identifier.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_LastChangesID")]
         public int LastChangesID { get; set; }
         /// <summary>
         /// زمان آخرین تغییر اطلاعات.
         /// </summary>
         /// <value>The history last changes time.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_LastChangesDate")]
         public DateTime LastChangesDate { get; set; }
 
         /// <summary>
         /// خذف آیتم.
         /// </summary>
         /// <value><c>true</c> if delete; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_DEL")]
         public bool DEL { get; set; }
         /// <summary>
         /// کد کاربر حذف کننده اطلاعات.
         /// </summary>
         /// <value>The delete unique identifier.</value>
+        [ModelMap("History_DeleteID")]
         public int? DeleteID { get; set; }
         /// <summary>
         /// زمان خذف اطلاعات.
         /// </summary>
         /// <value>The delete time.</value>
+        [ModelMap("History_DeleteDate")]
         public DateTime? DeleteDate { get; set; }
 
         /// <summary>
         /// غیر قابل تغییر
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_UnChangeable")]
         virtual public bool UnChangeable { get; set; } = false;
         /// <summary>
         /// غیر قابل حذف
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
-        [Required]
+        //[Required]
+        [ModelMap("History_NonRemovable")]
         virtual public bool NonRemovable { get; set; } = false;
 
         virtual public void SetValue(int cid)

@@ -20,7 +20,6 @@ using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using OptLib.Data.ComplexType;
 using OptLib.Data.Interface;
-using OptLib.Data.Base.Interface;
 using OptLib.Data.BaseModality.Qdt.Quiddity;
 using OptLib.Data.BaseModality.Qdt;
 
@@ -30,8 +29,7 @@ namespace OptLib.Data.BaseModels.Qdt
     /// ماهیت ارتباطات داده ای
     /// </summary>
     public abstract partial class BaseQdtRelation<TModalityQdtRelation>
-        : EntityBaseIdCPKey<long>,
-        IEntity, IId<long>, IEntityId<long>, IEntityBase, IEntityBaseId<long>, IEntityBaseIdCPKey<long>, IHistory
+        : EntityBaseId<long>
         where TModalityQdtRelation : BaseQdtRelation<TModalityQdtRelation>
     {
         #region Configuration
@@ -39,18 +37,19 @@ namespace OptLib.Data.BaseModels.Qdt
             : Configuration<TModalityQdtRelation>
         {
             public Configuration()
+                 : base()
             {
-                HasKey(c => new { c.Id, c.CPKey })
-                    ;
+                //HasKey(c => new { c.Id, c.CPKey })
+                //    ;
                 Property(c => c.Id)
                     .IsRequired()
                     .HasColumnOrder(1)
                     .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                     ;
-                Property(c => c.CPKey)
-                    .HasColumnOrder(2)
-                    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
-                    ;
+                //Property(c => c.CPKey)
+                //    .HasColumnOrder(2)
+                //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
+                //    ;
             }
         }
         #endregion
@@ -68,8 +67,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
 
         }
-        public BaseQdtRelation(long id, long cpKey)
-            : base(id, cpKey)
+        public BaseQdtRelation(long id/*, long cpKey*/)
+            : base(id/*, cpKey*/)
         {
 
         }
@@ -78,8 +77,8 @@ namespace OptLib.Data.BaseModels.Qdt
         {
             this.SetValue(history);
         }
-        public BaseQdtRelation(long id, long cpKey, _History history)
-            : base(id, cpKey)
+        public BaseQdtRelation(long id/*, long cpKey*/, _History history)
+            : base(id/*, cpKey*/)
         {
             this.SetValue(history);
         }

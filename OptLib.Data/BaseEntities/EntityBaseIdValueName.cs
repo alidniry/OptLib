@@ -14,7 +14,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using OptLib.Data.Base.Interface;
+using Optlib.Data.BulkCopy.Mapping;
 
 namespace OptLib.Data.Base
 {
@@ -33,7 +33,7 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
     /// <seealso cref="OptLib.Data.Base.IEntityBaseIdName{TEntity}" />
     public abstract class EntityBaseIdValueName<TKey, TValue>
-        : EntityBaseIdName<TKey>, IEntityBase, IId<TKey>, IName, IValue<TValue>, IEntityBaseId<TKey>, IEntityBaseIdName<TKey>, IEntityBaseIdValueName<TKey, TValue>
+        : EntityBaseIdName<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -63,6 +63,7 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <value>The name.</value>
         //[Required]
+        [ModelMap]
         public TValue Value { get; set; }
         #endregion
         #region Constructors

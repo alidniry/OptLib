@@ -65,13 +65,13 @@ namespace OptLib.Data
                     p.HasColumnType("nvarchar");
                     p.HasMaxLength(255);
                 });
-            Properties()
-                .Where(p => p.Name == "Value")
-                .Configure(p =>
-                {
-                    p.IsRequired();
-                    p.HasColumnOrder(3);
-                });
+            //Properties()
+            //    .Where(p => p.Name == "Value")
+            //    .Configure(p =>
+            //    {
+            //        p.IsRequired();
+            //        p.HasColumnOrder(3);
+            //    });
 
             //Properties()
             //    .Where(p => p.Name == "Name")

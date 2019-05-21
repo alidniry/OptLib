@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -24,12 +25,11 @@ namespace OptLib.Data.Base
     /// Id
     /// </summary>
     public abstract class EntityId<TKey>
-        : Entity, IId<TKey>, IEntityId<TKey>
-        //where TEntity : IEquatable<TEntity>
+        : _Entity, IEntityId<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : Entity.Configuration<TEntityType>
+            : _Entity.Configuration<TEntityType>
             where TEntityType : EntityId<TKey>
         {
             public Configuration()
@@ -46,7 +46,7 @@ namespace OptLib.Data.Base
                 //    ;
             }
         }
-        #endregion /Configuration
+        #endregion
         #region Properties
         /// <summary>
         /// کد اصلی.
@@ -56,6 +56,7 @@ namespace OptLib.Data.Base
         //[Required]
         //[Column(Order = 1)]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ModelMap]
         public virtual TKey Id { get; set; }
         #endregion
         #region Constructors

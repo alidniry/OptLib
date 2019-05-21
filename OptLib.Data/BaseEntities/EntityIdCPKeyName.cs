@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -24,7 +25,7 @@ namespace OptLib.Data.Base
     /// Id, Name
     /// </summary>
     public abstract class EntityIdCPKeyName<TKey>
-        : EntityIdCPKey<TKey>, IEntity, IId<TKey>, IEntityId<TKey>, IEntityIdName<TKey>, IEntityIdCPKey<TKey>, IEntityIdCPKeyName<TKey>
+        : EntityIdCPKey<TKey>, IEntityIdCPKeyName<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -61,7 +62,8 @@ namespace OptLib.Data.Base
         //[Required]
         //[StringLength(50)]
         //[Column(Order = 2, TypeName = "nvarchar")]
-        public string Name { get; set; }
+        [ModelMap]
+        public string Name { get; set; } = "Default";
         #endregion
         #region Constructors
         /// <summary>
@@ -70,7 +72,7 @@ namespace OptLib.Data.Base
         public EntityIdCPKeyName()
             : base()
         {
-            this.SetValue("Default");
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.

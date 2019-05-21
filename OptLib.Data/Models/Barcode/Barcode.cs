@@ -11,12 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base;
 using OptLib.Data.ComplexType;
 using OptLib.Data.Interface;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace OptLib.Data.Models
 {
@@ -54,8 +56,22 @@ namespace OptLib.Data.Models
         }
         #endregion
         #region Properties 
+        [ModelMap]
         public virtual ushort TypeId { get; set; }
         public virtual BarcodeType Type { get; set; }
+        #endregion
+        #region Properties abstract
+        //[NotMapped]
+        //public override List<SqlBulkCopyColumnMapping> ColumnMapping
+        //{
+        //    get
+        //    {
+        //        return new List<SqlBulkCopyColumnMapping>()
+        //        {
+        //            new SqlBulkCopyColumnMapping("Id", "Id"),
+        //        };
+        //    }
+        //}
         #endregion
         #region Constructors
         public Barcode()

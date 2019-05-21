@@ -118,6 +118,7 @@ namespace OptLib.Identity
         }
 
         public abstract void Seed(BaseApplicationDbContext<TUser, TRole> context);
+
         public class DropCreateAlwaysInitializer : DropCreateDatabaseAlways<BaseApplicationDbContext<TUser, TRole>>
         {
             protected override void Seed(BaseApplicationDbContext<TUser, TRole> context)

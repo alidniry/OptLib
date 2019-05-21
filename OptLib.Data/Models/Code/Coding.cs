@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using OptLib.Data.Models.ExtensionMethods;
+using System.Data.SqlClient;
+using Optlib.Data.BulkCopy.Mapping;
 
 namespace OptLib.Data.Models
 {
@@ -56,20 +58,43 @@ namespace OptLib.Data.Models
                     ;
             }
         }
-        #endregion 
+        #endregion
         #region Properties 
+        [ModelMap]
         public virtual ushort RefranceId { get; set; } = 0;
         public virtual CodingRefrance Refrance { get; set; }
 
+        [ModelMap]
         public bool QuiddityActions { get; set; } = false;
+        [ModelMap]
         public bool QuiddityActors { get; set; } = false;
+        [ModelMap]
         public bool QuiddityAllocationResources { get; set; } = false;
+        [ModelMap]
         public bool QuiddityConnections { get; set; } = false;
+        [ModelMap]
         public bool QuiddityObjects { get; set; } = false;
+        [ModelMap]
         public bool QuiddityPositions { get; set; } = false;
+        [ModelMap]
         public bool QuiddityPrices { get; set; } = false;
+        [ModelMap]
         public bool QuiddityRelations { get; set; } = false;
+        [ModelMap]
         public bool QuiddityServices { get; set; } = false;
+        #endregion
+        #region Properties abstract
+        //[NotMapped]
+        //public override List<SqlBulkCopyColumnMapping> ColumnMapping
+        //{
+        //    get
+        //    {
+        //        return new List<SqlBulkCopyColumnMapping>()
+        //        {
+        //            new SqlBulkCopyColumnMapping("Id", "Id"),
+        //        };
+        //    }
+        //}
         #endregion
         #region Constructors
         public Coding()

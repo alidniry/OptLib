@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
 	<id>OptLib.AutoMapper</id>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<title>OptLib.AutoMapper</title>
 	<authors>Ali Dehghan Niry</authors>
 	<owners>Ali Dehghan Niry</owners>
@@ -14,7 +14,7 @@
 	<copyright>Copyright 2018 (c) Contoso Corporation. All rights reserved.</copyright>
 	<tags>AutoMapper</tags>
     <dependencies>
-      <dependency id="AutoMapper" version="7.0.1" />
+      <dependency id="AutoMapper" version="8.0.0" />
       <dependency id="System.ValueTuple" version="4.5.0" />
     </dependencies>
 </metadata>

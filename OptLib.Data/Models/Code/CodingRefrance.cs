@@ -18,6 +18,7 @@ using OptLib.Data.Interface;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace OptLib.Data.Models
 {
@@ -48,6 +49,19 @@ namespace OptLib.Data.Models
         }
         #endregion 
         #region Properties
+        #endregion
+        #region Properties abstract
+        //[NotMapped]
+        //public override List<SqlBulkCopyColumnMapping> ColumnMapping
+        //{
+        //    get
+        //    {
+        //        return new List<SqlBulkCopyColumnMapping>()
+        //        {
+        //            new SqlBulkCopyColumnMapping("Id", "Id"),
+        //        };
+        //    }
+        //}
         #endregion
         #region Constructors
         public CodingRefrance()

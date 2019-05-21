@@ -14,6 +14,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 
 namespace OptLib.Data.Base
@@ -33,7 +34,7 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.IEntityBaseIdName{TEntity}" />
     /// <seealso cref="OptLib.Data.Base.EntityBaseIdName{TEntity}" />
     public abstract class EntityBaseIdNameDescription<TKey>
-        : EntityBaseIdName<TKey>, IEntityBase, IId<TKey>, IName, IDescription, IEntityBaseId<TKey>, IEntityBaseIdName<TKey>, IEntityBaseIdNameDescription<TKey>
+        : EntityBaseIdName<TKey>, IEntityBaseIdNameDescription<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -56,7 +57,7 @@ namespace OptLib.Data.Base
             }
 
         }
-        #endregion /Configuration
+        #endregion
         #region Properties
         /// <summary>
         /// توضیحات ایتم
@@ -64,6 +65,7 @@ namespace OptLib.Data.Base
         /// <value>The name.</value>
         //[StringLength(255)]
         //[Column(TypeName = "nvarchar")]
+        [ModelMap]
         public string Description { get; set; }
         #endregion
         #region Constructors

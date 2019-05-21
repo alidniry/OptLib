@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -24,8 +25,7 @@ namespace OptLib.Data.Base
     /// Id
     /// </summary>
     public abstract class EntityIdCPKey<TKey>
-        : EntityId<TKey>, IId<TKey>, IEntity, IEntityId<TKey>, IEntityIdCPKey<TKey>
-        //where TEntity : IEquatable<TEntity>
+        : EntityId<TKey>, IEntityIdCPKey<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -56,7 +56,8 @@ namespace OptLib.Data.Base
         /// <summary>
         /// GS1 Company Prefix Key
         /// </summary>
-        public long CPKey { get; set; } = 0; //0 : فاقد سیستم کدینگ 
+        [ModelMap]
+        public long CPKey { get; set; } = 0; 
         #endregion
         #region Constructors
         /// <summary>

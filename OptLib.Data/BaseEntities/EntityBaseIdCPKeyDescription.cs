@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -23,13 +24,8 @@ namespace OptLib.Data.Base
     /// Id, Description
     /// Active, Lock, Visible, SuportOtherLanguage
     /// </summary>
-    /// <typeparam name="TKey">The type of the t entity.</typeparam>
-    /// <seealso cref="OptLib.Data.Base.EntityBaseId{TEntity}" />
-    /// <seealso cref="OptLib.Data.Base.Interface.IEntity" />
-    /// <seealso cref="OptLib.Data.Base.Interface.IEntityId{TEntity}" />
-    /// <seealso cref="OptLib.Data.Base.Interface.IEntityIdDescription{TEntity}" />
     public abstract class EntityBaseIdCPKeyDescription<TKey>
-        : EntityBaseIdCPKey<TKey>, IEntityBase, IEntityBaseId<TKey>, IEntityBaseIdCPKey<TKey>, IEntityBaseIdDescription<TKey>, IEntityBaseIdCPKeyDescription<TKey>
+        : EntityBaseIdCPKey<TKey>, IEntityBaseIdCPKeyDescription<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -51,7 +47,7 @@ namespace OptLib.Data.Base
                 //    ;
             }
         }
-        #endregion /Configuration
+        #endregion
         #region Properties
         /// <summary>
         /// توضیحات آیتم
@@ -59,6 +55,7 @@ namespace OptLib.Data.Base
         /// <value>The name.</value>
         //[StringLength(255)]
         //[Column(TypeName = "nvarchar")]
+        [ModelMap]
         public string Description { get; set; }
         #endregion
         #region Constructors
@@ -79,6 +76,8 @@ namespace OptLib.Data.Base
         {
 
         }
+        #endregion
+        #region Methods
         #endregion
     }
 }

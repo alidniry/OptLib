@@ -8,14 +8,6 @@ using System.Threading.Tasks;
 
 namespace OptLib.Data.InfrastructureLayer
 {
-    public interface IBaseRepository<TEntity>
-        where TEntity : class
-    {
-        TEntity GetEntityById(object id);
-        TEntity Add(TEntity entity);
-        List<TEntity> GetAll();
-        //void Insert(TEntity entity);
-    }
     public interface IRepository<TEntity, TRep> : IBaseRepository<TEntity>
         where TEntity : class
         where TRep : BaseRep<TEntity>

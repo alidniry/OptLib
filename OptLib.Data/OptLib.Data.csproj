@@ -31,27 +31,27 @@
     <DocumentationFile>bin\Release\OptLib.Data.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="OptLib.ExtensionMethods, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OptLib.ExtensionMethods.1.0.0\lib\net461\OptLib.ExtensionMethods.dll</HintPath>
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\OptLib.ExtensionMethods.1.0.0\lib\net461\OptLib.ExtensionMethods.dll</HintPath>
     </Reference>
     <Reference Include="OptLib.Globalization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OptLib.Globalization.1.0.0\lib\net461\OptLib.Globalization.dll</HintPath>
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\OptLib.Globalization.1.0.1\lib\net461\OptLib.Globalization.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <HintPath>D:\Projects\Company Negareh\NegarehBackEnd\Saman\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,40 +63,70 @@
   <ItemGroup>
     <Compile Include="BaseConvention.cs" />
     <Compile Include="BaseDatabaseContext.cs" />
-    <Compile Include="BaseEntities\EntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\HEntityIdNameDescription.cs" />
+    <Compile Include="BaseEntities\HEntityIdDescription.cs" />
+    <Compile Include="BaseEntities\HEntityIdCPKeyNameDescription.cs" />
+    <Compile Include="BaseEntities\HEntityIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdNameDescription.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdDescription.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdCPKeyNameDescription.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdCPKeyDescription.cs" />
     <Compile Include="BaseEntities\EntityBaseIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\EntityBaseIdCPKeyNameDescription.cs" />
     <Compile Include="BaseEntities\EntityBaseIdCPKeyName.cs" />
-    <Compile Include="BaseEntities\EntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\EntityIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\EntityIdCPKeyNameDescription.cs" />
+    <Compile Include="BaseEntities\EntityIdDescription.cs" />
+    <Compile Include="BaseEntities\EntityIdNameDescription.cs" />
+    <Compile Include="BaseEntities\HEntityIdCPKeyName.cs" />
     <Compile Include="BaseEntities\EntityIdCPKeyName.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdCPKey.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdCPKeyDescription.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdCPKeyName.cs" />
-    <Compile Include="BaseEntities\IEntityIdCPKey.cs" />
-    <Compile Include="BaseEntities\IEntityIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdName.cs" />
+    <Compile Include="BaseEntities\HEntityIdName.cs" />
+    <Compile Include="BaseEntities\HEntityBaseId.cs" />
+    <Compile Include="BaseEntities\HEntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\EntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\HEntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\HEntity.cs" />
+    <Compile Include="BaseEntities\HEntityId.cs" />
+    <Compile Include="BaseEntities\HEntityBase.cs" />
+    <Compile Include="BaseEntities\EntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBase.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseId.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdCPKey.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdCPKeyNameDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdName.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityBaseIdNameDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityId.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdCPKeyDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdCPKey.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdCPKeyNameDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdCPKeyName.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdNameDescription.cs" />
+    <Compile Include="BaseEntities\Interface\IEntityIdName.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityActor.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityAllocationResource.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityConnection.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityObject.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityPosition.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityPrice.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityRelation.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityAction.cs" />
+    <Compile Include="BaseModels\Quiddity\BaseQuiddityService.cs" />
     <Compile Include="BaseModels\BaseHLog.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityQuiddity.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityAction.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityActor.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityAllocationResource.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityObject.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityPosition.cs" />
-    <Compile Include="BaseModality\Qdt\Quiddity\ModalityService.cs" />
-    <Compile Include="BaseModels\Qdt\BaseQdtConnection.cs" />
-    <Compile Include="BaseModels\Qdt\BaseQdtPrice.cs" />
-    <Compile Include="BaseModels\Qdt\BaseQdtRelation.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQdtQuiddity.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtAction.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtActor.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtAllocationResource.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtObject.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtPosition.cs" />
-    <Compile Include="BaseModels\Qdt\Quiddity\BaseQuiddityQdtService.cs" />
-    <Compile Include="BaseEntities\Entity.cs" />
+    <Compile Include="BaseEntities\_Entity.cs" />
     <Compile Include="BaseEntities\EntityIdName.cs" />
-    <Compile Include="BaseEntities\IEntityIdName.cs" />
-    <Compile Include="BaseEntities\IEntityId.cs" />
     <Compile Include="BaseEntities\EntityId.cs" />
-    <Compile Include="BaseEntities\IBaseEntity.cs" />
+    <Compile Include="BulkCopy.cs" />
+    <Compile Include="DatabaseExtensions.cs" />
+    <Compile Include="DBs.cs" />
+    <Compile Include="Helper\EntitiesReflection\EntitiesReflection.cs" />
+    <Compile Include="InfrastructureLayer\IBaseRepository.cs" />
+    <Compile Include="InfrastructureLayer\BaseRepository.cs" />
     <Compile Include="Models\Barcode\Barcode.cs" />
     <Compile Include="Models\Barcode\BarcodeType.cs" />
     <Compile Include="Models\Code\CodingRefrance.cs" />
@@ -106,21 +136,8 @@
     <Compile Include="BaseEntities\EntityBase.cs" />
     <Compile Include="BaseEntities\EntityBaseId.cs" />
     <Compile Include="BaseEntities\EntityBaseIdDescription.cs" />
-    <Compile Include="BaseEntities\EntityBaseIdValueNameDescription.cs" />
-    <Compile Include="BaseEntities\EntityBaseIdValueName.cs" />
     <Compile Include="BaseEntities\EntityBaseIdName.cs" />
     <Compile Include="BaseEntities\EntityBaseIdNameDescription.cs" />
-    <Compile Include="BaseEntities\IEntityBaseId.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdDescription.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdName.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdNameDescription.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdValueName.cs" />
-    <Compile Include="BaseEntities\IEntityBaseIdValueNameDescription.cs" />
-    <Compile Include="BaseEntities\Interface\IValue.cs" />
-    <Compile Include="BaseEntities\Interface\IName.cs" />
-    <Compile Include="BaseEntities\Interface\IId.cs" />
-    <Compile Include="BaseEntities\IEntityBase.cs" />
-    <Compile Include="BaseEntities\Interface\IDescription.cs" />
     <Compile Include="ComplexType\_View.cs" />
     <Compile Include="ComplexType\_HistoryLog.cs" />
     <Compile Include="ComplexType\_History.cs" />

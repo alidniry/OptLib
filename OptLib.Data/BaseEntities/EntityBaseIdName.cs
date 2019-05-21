@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +31,7 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.Interface.IId{TEntity}" />
     /// <seealso cref="OptLib.Data.Base.IEntityBaseId{TEntity}" />
     public abstract class EntityBaseIdName<TKey>
-        : EntityBaseId<TKey>, IEntityBase, IId<TKey>, IEntityBaseId<TKey>, IEntityBaseIdName<TKey>
+        : EntityBaseId<TKey>, IEntityBaseIdName<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -40,12 +41,12 @@ namespace OptLib.Data.Base
             public Configuration()
                 : base()
             {
-                Property(c => c.Name)
-                    .IsRequired()
-                    .HasColumnType("nvarchar")
-                    .HasColumnOrder(2)
-                    .HasMaxLength(50)
-                    ;
+                //Property(c => c.Name)
+                //    .IsRequired()
+                //    .HasColumnType("nvarchar")
+                //    .HasColumnOrder(2)
+                //    .HasMaxLength(50)
+                //    ;
                 //Property(c => c.Id)
                 //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
                 //    .HasColumnOrder(5)
@@ -67,7 +68,8 @@ namespace OptLib.Data.Base
         //[Required]
         //[StringLength(50)]
         //[Column(Order = 2, TypeName = "nvarchar")]
-        public string Name { get; set; }
+        [ModelMap]
+        public string Name { get; set; } = "Default";
         #endregion
         #region Constructors
         /// <summary>
@@ -76,7 +78,7 @@ namespace OptLib.Data.Base
         public EntityBaseIdName()
             : base()
         {
-            this.SetValue("Default");
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityBaseIdName{TEntity}" /> class.

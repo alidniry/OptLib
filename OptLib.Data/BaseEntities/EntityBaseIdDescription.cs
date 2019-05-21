@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,7 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.Interface.IEntityId{TEntity}" />
     /// <seealso cref="OptLib.Data.Base.Interface.IEntityIdDescription{TEntity}" />
     public abstract class EntityBaseIdDescription<TKey>
-        : EntityBaseId<TKey>, IEntityBase, IEntityBaseId<TKey>, IEntityBaseIdDescription<TKey>
+        : EntityBaseId<TKey>, IEntityBaseIdDescription<TKey>
     {
         #region Configuration
         public class Configuration<TEntityType>
@@ -59,6 +60,7 @@ namespace OptLib.Data.Base
         /// <value>The name.</value>
         //[StringLength(255)]
         //[Column(TypeName = "nvarchar")]
+        [ModelMap]
         public string Description { get; set; }
         #endregion
         #region Constructors

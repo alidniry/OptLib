@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using Optlib.Data.BulkCopy.Mapping;
 using OptLib.Data.Base.Interface;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -26,12 +27,12 @@ namespace OptLib.Data.Base
     /// <seealso cref="OptLib.Data.Base.IEntityBase" />
     /// <seealso cref="OptLib.Data.Base.Interface.IEntity" />
     public abstract class EntityBase
-        : Entity, IEntity, IEntityBase
+        : _Entity, IEntityBase
     {
         #region Configuration
         public class Configuration<TEntityType>
-            : Entity.Configuration<TEntityType>
-            where TEntityType : Entity
+            : _Entity.Configuration<TEntityType>
+            where TEntityType : EntityBase
         {
             public Configuration()
                  : base()
@@ -49,12 +50,14 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         //[Required]
+        [ModelMap]
         virtual public bool Active { get; set; } = true;
         /// <summary>
         /// قفل بودن آیتم
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         //[Required]
+        [ModelMap]
         virtual public bool Lock { get; set; } = false;
 
         /// <summary>
@@ -62,12 +65,14 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         //[Required]
+        [ModelMap]
         virtual public bool Visible { get; set; } = true;
         /// <summary>
         /// پشتیبانی از داده سایر زبانها.
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         //[Required]
+        [ModelMap]
         virtual public bool SuportOtherLanguage { get; set; } = false;
 
         /// <summary>
@@ -75,12 +80,14 @@ namespace OptLib.Data.Base
         /// </summary>
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         //[Required]
+        //[ModelMap]
         //virtual public bool Valid { get; set; } = true;
 
         /// <summary>
         /// قابل نمایش بودن آیتم.
         /// </summary>
         //[Required]
+        //[ModelMap]
         //virtual public bool ItemDisplayable { get; set; } = true;
         #endregion
         #region Constructors
@@ -88,12 +95,9 @@ namespace OptLib.Data.Base
         /// Initializes a new instance of the <see cref="EntityBase" /> class.
         /// </summary>
         public EntityBase()
+            : base()
         {
 
-        }
-        public EntityBase(bool active, bool @lock, bool visible, bool suportOtherLanguage)
-        {
-            this.SetValue(active, @lock, visible, suportOtherLanguage);
         }
         #endregion
         #region Methods
